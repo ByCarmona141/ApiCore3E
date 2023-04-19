@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Entity\systemUser" table="systemUser">
+        <id name="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="user" length="32" nullable="true" column="user"/>
+        <field name="password" length="32" nullable="true" column="password"/>
+        <field name="email" length="64" nullable="true" column="email"/>
+        <field name="selfie" length="256" nullable="true" column="selfie"/>
+        <field name="tag" length="16" nullable="true" column="tag"/>
+        <field name="fullName" length="256" nullable="true" column="fullName"/>
+        <field name="address" length="256" nullable="true" column="address"/>
+        <field name="phone" length="32" nullable="true" column="phone"/>
+        <field name="area" type="integer" nullable="true" column="area"/>
+        <field name="idOffice" type="integer" nullable="true" column="idOffice"/>
+        <field name="idSystemUserStatus" type="integer" nullable="true" column="idSystemUserStatus"/>
+        <field name="idSystemRole" type="integer" nullable="true" column="idSystemRole"/>
+        <field name="idEmployee" type="integer" nullable="true" column="idEmployee"/>
+        <field name="tries" type="integer" nullable="true" column="tries"/>
+        <field name="position" length="64" nullable="true" column="position"/>
+        <field name="skype" length="64" nullable="true" column="skype"/>
+    </entity>
+</doctrine-mapping>

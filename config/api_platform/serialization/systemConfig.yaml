@@ -1,0 +1,12 @@
+App\Entity\systemConfig:
+  attributes:
+    configKey:
+      groups: [ systemConfig_read, systemConfig_create, systemConfig_update ]
+    name:
+      groups: [ systemConfig_read, systemConfig_create, systemConfig_update ]
+    value:
+      groups: [ systemConfig_read, systemConfig_create, systemConfig_update ]
+    tipeofHTML:
+      groups: [ systemConfig_read, systemConfig_create, systemConfig_update ]
+    category:
+      groups: [ systemConfig_read, systemConfig_create, systemConfig_update ]

@@ -1,0 +1,24 @@
+App\Entity\systemTemplate:
+  attributes:
+    name:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    header:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    body:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    footer:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    orientation:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    size:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    headerSpacing:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    footerSpacing:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    frontPage:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    script:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    json:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]

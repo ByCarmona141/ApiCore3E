@@ -1,0 +1,14 @@
+App\Entity\systemRepository:
+  attributes:
+    name:
+      groups: [ systemRepository_read, systemRepository_create, systemRepository_update ]
+    description:
+      groups: [ systemRepository_read, systemRepository_create, systemRepository_update ]
+    size:
+      groups: [ systemRepository_read, systemRepository_create, systemRepository_update ]
+    entity:
+      groups: [ systemRepository_read, systemRepository_create, systemRepository_update ]
+    tuple:
+      groups: [ systemRepository_read, systemRepository_create, systemRepository_update ]
+    route:
+      groups: [ systemRepository_read, systemRepository_create, systemRepository_update ]

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Entity\systemLog" table="systemLog">
+        <id name="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="entity" length="64" nullable="true" column="`entity`"/>
+        <field name="tuple" length="64" nullable="true" column="tuple"/>
+        <field name="date" type="datetime" nullable="true" column="`date`"/>
+        <field name="data" type="text" nullable="true" column="data"/>
+        <field name="idSystemUser" type="integer" nullable="true" column="idSystemUser"/>
+        <field name="idSystemAction" type="integer" nullable="true" column="idSystemAction"/>
+        <field name="ipAddress" length="32" nullable="true" column="ipAddress"/>
+        <field name="agent" length="256" nullable="true" column="agent"/>
+        <field name="form" length="128" nullable="true" column="form"/>
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function dynvar() {
+			var d = new Date();
+			var months = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
+			document.getElementById('paginate').innerHTML = d.getDate() + ' DE ' + months[d.getMonth()] + ' DEL ' + d.getFullYear() + ' EXPIRA EN 30 D&Iacute;AS NATURALES';
+		}
+	</script>
+</head>
+<body style="margin:0;"  onload="dynvar();">
+<div style="float:left;margin:5px 5px 0;text-align:left;width:150px;font-size: 10pt; z-index: -1000 !important">
+	<br>
+	<img alt="DPB" src="http://api.mspv.local/repository/template/mspv_membrete_footer.png" />
+</div>
+<div style="float:right;margin:5px 5px 0;text-align:right;width:800px;">
+	<br>
+	<b><span id="paginate" style="color: #FFFFFF;;display:inline-block;font-size:22px; font-color: white !important;font-weight:300; z-index: 1000 !important; position: relative !important; top: 125px !important; left: -120px !important; width:800px !important;"></span></b>
+</div>
+
+</body>
+</html>

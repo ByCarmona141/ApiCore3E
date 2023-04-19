@@ -1,0 +1,8 @@
+App\Entity\systemDocument:
+  attributes:
+    idSystemTemplate:
+      groups: [ systemDocument_read, systemDocument_create, systemDocument_update ]
+    content:
+      groups: [ systemDocument_read, systemDocument_create, systemDocument_update ]
+    dateCreate:
+      groups: [ systemDocument_read, systemDocument_create, systemDocument_update ]

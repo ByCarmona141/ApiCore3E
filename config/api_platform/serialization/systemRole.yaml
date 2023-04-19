@@ -1,0 +1,6 @@
+App\Entity\systemRole:
+  attributes:
+    name:
+      groups: [ systemRole_read, systemRole_create, systemRole_update ]
+    active:
+      groups: [ systemRole_read, systemRole_create, systemRole_update ]

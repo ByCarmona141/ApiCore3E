@@ -1,0 +1,34 @@
+App\Entity\systemUser:
+  attributes:
+    user:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    password:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    email:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    selfie:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    tag:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    fullName:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    address:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    phone:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    area:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    idOffice:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    idSystemUserStatus:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    idSystemRole:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    idEmployee:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    tries:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    position:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]
+    skype:
+      groups: [ systemUser_read, systemUser_create, systemUser_update ]

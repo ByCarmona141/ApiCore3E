@@ -1,0 +1,144 @@
+App\Entity\systemDocument:
+  attributes:
+    normalization_context:
+      groups: [ systemDocument_read ]
+  collectionOperations:
+    post:
+      method: POST
+      path: /systemDocument
+      controller: App\Api\Action\systemDocument\Register
+      denormalization_context:
+        groups: [ systemDocument_create ]
+      openapi_context:
+        summary: Nuevo registro
+    datatable:
+      method: POST
+      path: /systemDocument/{serveFunction}
+      controller: App\Api\Action\systemDocument\Table
+      deserialize: false
+      openapi_context:
+        summary: Datatable
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dataTablesParameters:
+                    type: object
+                    properties:
+                      columns:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            data:
+                              type: integer
+                            name:
+                              type: string
+                            searchable:
+                              type: boolean
+                            orderable:
+                              type: boolean
+                            search:
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                                regex:
+                                  type: boolean
+                      draw:
+                        type: integer
+                      length:
+                        type: integer
+                      order:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            column:
+                              type: integer
+                            dir:
+                              type: string
+                      search:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                          regex:
+                            type: boolean
+                      start:
+                        type: integer
+                  params:
+                    type: object
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    draw:
+                      type: integer
+                    recordsFiltered:
+                      type: integer
+                    recordsTotal:
+                      type: integer
+                    data:
+                      type: array
+                      items:
+                        type: object
+    combo:
+      method: GET
+      path: /systemDocument/combo/{inText?false}
+      controller: App\Api\Action\systemDocument\Combo
+      deserialize: false
+      openapi_context:
+        summary: Data to combo/select
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      0:
+                        oneOf:
+                          - type: integer
+                          - type: string
+                      1:
+                        type: string
+  itemOperations:
+    get:
+      method: GET
+      path: /systemDocument/{id}
+      controller: App\Api\Action\systemDocument\Data
+      denormalization_context:
+        groups: [ systemDocument_read ]
+      openapi_context:
+        summary: Obtiene la informacion del registro
+    put:
+      method: PUT
+      path: /systemDocument/{id}
+      controller: App\Api\Action\systemDocument\Update
+      denormalization_context:
+        groups: [ systemDocument_update ]
+      openapi_context:
+        summary: Actualiza el registro
+    delete:
+      path: /systemDocument/{id}
+      controller: App\Api\Action\systemDocument\Delete
+      method: DELETE
+      openapi_context:
+        summary: Elimina el registro
+    report:
+      method: GET
+      path: /systemDocument/report/{id}
+      controller: App\Api\Action\systemDocument\Report
+      deserialize: false
+      openapi_context:
+        summary: Obtiene el PDF

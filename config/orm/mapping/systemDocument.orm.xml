@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Entity\systemDocument" table="systemDocument">
+        <id name="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="idSystemTemplate" type="integer" nullable="true" column="`idSystemTemplate`"/>
+        <field name="content" type="text" nullable="true" column="`content`"/>
+        <field name="dateCreate" type="datetime" nullable="true" column="`dateCreate`"/>
+    </entity>
+</doctrine-mapping>

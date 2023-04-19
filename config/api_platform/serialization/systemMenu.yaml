@@ -1,0 +1,16 @@
+App\Entity\systemMenu:
+  attributes:
+    name:
+      groups: [ systemMenu_read, systemMenu_create, systemMenu_update ]
+    description:
+      groups: [ systemMenu_read, systemMenu_create, systemMenu_update ]
+    href:
+      groups: [ systemMenu_read, systemMenu_create, systemMenu_update ]
+    idSystemIcon:
+      groups: [ systemMenu_read, systemMenu_create, systemMenu_update ]
+    category:
+      groups: [ systemMenu_read, systemMenu_create, systemMenu_update ]
+    priority:
+      groups: [ systemMenu_read, systemMenu_create, systemMenu_update ]
+    idSystemTypeElement:
+      groups: [ systemMenu_read, systemMenu_create, systemMenu_update ]

@@ -1,0 +1,8 @@
+App\Entity\systemUserStatus:
+  attributes:
+    name:
+      groups: [ systemUserStatus_read, systemUserStatus_create, systemUserStatus_update ]
+    description:
+      groups: [ systemUserStatus_read, systemUserStatus_create, systemUserStatus_update ]
+    active:
+      groups: [ systemUserStatus_read, systemUserStatus_create, systemUserStatus_update ]

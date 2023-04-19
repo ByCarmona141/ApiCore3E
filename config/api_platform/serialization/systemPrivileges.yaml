@@ -1,0 +1,6 @@
+App\Entity\systemPrivileges:
+  attributes:
+    name:
+      groups: [ systemPrivileges_read, systemPrivileges_create, systemPrivileges_update ]
+    description:
+      groups: [ systemPrivileges_read, systemPrivileges_create, systemPrivileges_update ]

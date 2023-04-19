@@ -1,0 +1,137 @@
+App\Entity\systemPrivilegesUserRole:
+  attributes:
+    normalization_context:
+      groups: [ systemPrivilegesUserRole_read ]
+  collectionOperations:
+    post:
+      method: POST
+      path: /systemPrivilegesUserRole
+      controller: App\Api\Action\systemPrivilegesUserRole\Register
+      denormalization_context:
+        groups: [ systemPrivilegesUserRole_create ]
+      openapi_context:
+        summary: Nuevo registro
+    datatable:
+      method: POST
+      path: /systemPrivilegesUserRole/{serveFunction}
+      controller: App\Api\Action\systemPrivilegesUserRole\Table
+      deserialize: false
+      openapi_context:
+        summary: Datatable
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dataTablesParameters:
+                    type: object
+                    properties:
+                      columns:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            data:
+                              type: integer
+                            name:
+                              type: string
+                            searchable:
+                              type: boolean
+                            orderable:
+                              type: boolean
+                            search:
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                                regex:
+                                  type: boolean
+                      draw:
+                        type: integer
+                      length:
+                        type: integer
+                      order:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            column:
+                              type: integer
+                            dir:
+                              type: string
+                      search:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                          regex:
+                            type: boolean
+                      start:
+                        type: integer
+                  params:
+                    type: object
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    draw:
+                      type: integer
+                    recordsFiltered:
+                      type: integer
+                    recordsTotal:
+                      type: integer
+                    data:
+                      type: array
+                      items:
+                        type: object
+    combo:
+      method: GET
+      path: /systemPrivilegesUserRole/combo/{inText?false}
+      controller: App\Api\Action\systemPrivilegesUserRole\Combo
+      deserialize: false
+      openapi_context:
+        summary: Data to combo/select
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      0:
+                        oneOf:
+                          - type: integer
+                          - type: string
+                      1:
+                        type: string
+  itemOperations:
+    get:
+      method: GET
+      path: /systemPrivilegesUserRole/{id}
+      controller: App\Api\Action\systemPrivilegesUserRole\Data
+      denormalization_context:
+        groups: [ systemPrivilegesUserRole_read ]
+      openapi_context:
+        summary: Obtiene la informacion del registro
+    put:
+      method: PUT
+      path: /systemPrivilegesUserRole/{id}
+      controller: App\Api\Action\systemPrivilegesUserRole\Update
+      denormalization_context:
+        groups: [ systemPrivilegesUserRole_update ]
+      openapi_context:
+        summary: Actualiza el registro
+    delete:
+      path: /systemPrivilegesUserRole/{id}
+      controller: App\Api\Action\systemPrivilegesUserRole\Delete
+      method: DELETE
+      openapi_context:
+        summary: Elimina el registro

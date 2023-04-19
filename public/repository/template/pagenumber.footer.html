@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function dynvar() {
+			var vars = {};
+			var x = document.location.search.substring(1).split('&');
+
+			for (var i in x) {
+				var z = x[i].split('=',2);
+
+				if (!vars[z[0]]) {
+					vars[z[0]] = unescape(z[1]);
+				}
+			}
+
+			var vars_title = {};
+			var x = vars.doctitle.split('/*/');
+
+			for (var i in x) {
+				var z = x[i].split(':',2);
+
+				if (!vars_title[z[0]]) {
+					vars_title[z[0]] = unescape(z[1]);
+				}
+			}
+
+			document.getElementById('paginate').innerHTML = 'P&aacute;gina ' + vars.page + ' de ' + vars.topage;
+		}
+	</script>
+</head>
+<body style="margin:0;"  onload="dynvar();">
+<div style="margin: 0px 40px 0px 40px; border-top:#003B68 solid 6px; color:#333; font-family:Lato,sans-serif;font-size:10pt;height:1px;position:relative;"></div>
+
+<div style="margin: 0px 40px 0px 40px; border-top:#256F38 solid 4px; color:#333;font-family:Lato,sans-serif;font-size:10pt;height:2px;position:relative;"></div>
+
+<div style="margin: 0px 40px 0px 40px; border-top:#9A9791 solid 3px; color:#333;font-family:Lato,sans-serif;font-size:10pt;height:1px;position:relative;">
+	<div style="float:left;margin:3px 3px 0;text-align:left;width:350px;font-size: 10pt;">
+		<br>
+		<div align="center">
+			Privada Hidalgo No. 7, Col. Bur&oacute;catas. Chilpancingo, Gro. C.P. 39090<br>
+			ventas@ambet.com.mx<br>
+			747 138 60 44
+		</div>
+	</div>
+	<div style="float:right;margin:3px 3px 0;text-align:right;width:200px;">
+		<br>
+		<span id="paginate" style="color:#666666;display:inline-block;font-size:11px;font-weight:300;">{page} de {topage} </span>
+	</div>
+</div>
+</body>
+</html>

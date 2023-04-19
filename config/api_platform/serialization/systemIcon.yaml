@@ -1,0 +1,4 @@
+App\Entity\systemIcon:
+  attributes:
+    name:
+      groups: [ systemIcon_read, systemIcon_create, systemIcon_update ]

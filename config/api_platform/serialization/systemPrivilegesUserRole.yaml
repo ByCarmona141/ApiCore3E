@@ -1,0 +1,12 @@
+App\Entity\systemPrivilegesUserRole:
+  attributes:
+    idSystemPrivileges:
+      groups: [ systemPrivilegesUserRole_read, systemPrivilegesUserRole_create, systemPrivilegesUserRole_update ]
+    objectSource:
+      groups: [ systemPrivilegesUserRole_read, systemPrivilegesUserRole_create, systemPrivilegesUserRole_update ]
+    objectTupla:
+      groups: [ systemPrivilegesUserRole_read, systemPrivilegesUserRole_create, systemPrivilegesUserRole_update ]
+    active:
+      groups: [ systemPrivilegesUserRole_read, systemPrivilegesUserRole_create, systemPrivilegesUserRole_update ]
+    objetcAccess:
+      groups: [ systemPrivilegesUserRole_read, systemPrivilegesUserRole_create, systemPrivilegesUserRole_update ]

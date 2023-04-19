@@ -1,0 +1,18 @@
+App\Entity\systemLog:
+  attributes:
+    entity:
+      groups: [ systemLog_read, systemLog_create, systemLog_update ]
+    tuple:
+      groups: [ systemLog_read, systemLog_create, systemLog_update ]
+    date:
+      groups: [ systemLog_read, systemLog_create, systemLog_update ]
+    data:
+      groups: [ systemLog_read, systemLog_create, systemLog_update ]
+    idSystemUser:
+      groups: [ systemLog_read, systemLog_create, systemLog_update ]
+    idSystemAction:
+      groups: [ systemLog_read, systemLog_create, systemLog_update ]
+    ipAddress:
+      groups: [ systemLog_read, systemLog_create, systemLog_update ]
+    agent:
+      groups: [ systemLog_read, systemLog_create, systemLog_update ]
