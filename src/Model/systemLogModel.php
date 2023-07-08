@@ -3,7 +3,7 @@
     namespace App\Model;
 
     class systemLogModel {
-        public function readDataTable($params = false): array {
+        public function readDataTable($params = false, $rol = null): array {
             if($params && is_array($params)) {
                 extract($params, EXTR_OVERWRITE);
             }

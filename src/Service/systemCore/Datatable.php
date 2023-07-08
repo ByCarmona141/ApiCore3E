@@ -10,6 +10,7 @@ use Doctrine\DBAL\Exception as ExceptionDBAL;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 
 
 class Datatable {
@@ -17,15 +18,18 @@ class Datatable {
     private ExtraColumn            $extraColumn;
     private RenderColumn           $renderColumn;
     private RenderRow              $renderRow;
+    private Security               $security;
 
     public function __construct(EntityManagerInterface $entityManager,
                                 ExtraColumn            $extraColumn,
                                 RenderColumn           $renderColumn,
-                                RenderRow              $renderRow) {
+                                RenderRow              $renderRow,
+                                Security                $security) {
         $this->entityManager = $entityManager;
         $this->extraColumn = $extraColumn;
         $this->renderColumn = $renderColumn;
         $this->renderRow = $renderRow;
+        $this->security = $security;
     }
 
     /**
@@ -42,7 +46,9 @@ class Datatable {
         $search = $body['dataTablesParameters']['search'];
         $start = $body['dataTablesParameters']['start'];
 
-        $config = $class->$function(count($params) > 0 ? $params : false);
+        // Obtenemos el rol
+        $role = $this->security->getUser()->getRoles()[0];
+        $config = $class->$function(count($params) > 0 ? $params : false, $role);
 
         $tableDT = $config['table']['alias'] != '' ? $config['table']['alias'] : $config['table']['name'];
         $indexDT = $config['index']['alias'] != '' ? $config['index']['alias'] : $config['index']['name'];
@@ -64,6 +70,7 @@ class Datatable {
         }
         $columnsDT = implode(", ", $columnsDT);
         $limitDT = '';
+
         if($length != -1) {
             $limitDT = "limit $start, $length";
         }
@@ -77,8 +84,8 @@ class Datatable {
         }
 
         $group = $config['group'] != '' ? "group by {$config['group']}" : '';
-
         $searchDT = [];
+
         if($search['value'] != '') {
             foreach($config['columns'] as $column) {
                 if($column['type'] == 1) {
@@ -131,6 +138,7 @@ class Datatable {
             }
             $row['DT_RowId'] = "$tableDT{$record[$indexDT]}";
             $row['DT_RowClass'] = "datatableRow";
+
             if($config['renderRow'] != '') {
                 $row['DT_RowClass'] .= ' ' . $this->renderRow::render($config['renderRow'], $record[$indexDT], $record);
             }
@@ -148,6 +156,7 @@ class Datatable {
         $total = 0;
         $queryTotal = "select count(*) as total from {$config['table']['name']} as a";
         $resultTotal = $this->entityManager->getConnection()->executeQuery($queryTotal);
+
         if($resultTotal->rowCount() > 0) {
             $recordTotal = $resultTotal->fetchAllAssociative();
             $total = (int)$recordTotal[0]['total'];

@@ -3,7 +3,7 @@
     namespace App\Model;
 
     class systemDocumentModel {
-        public function readDataTable($params = false): array {
+        public function readDataTable($params = false, $rol = null): array {
             if($params && is_array($params)) {
                 extract($params, EXTR_OVERWRITE);
             }
@@ -44,6 +44,13 @@
                         'name'   => 'dateCreate',
                         'alias'  => '',
                         'extra'  => '',
+                        'render' => ''
+                    ],
+                    [
+                        'type'   => 0,
+                        'name'   => '',
+                        'alias'  => '',
+                        'extra'  => 'report',
                         'render' => ''
                     ],
                     
