@@ -9,10 +9,10 @@
     use Doctrine\ORM\ORMException;
     use Symfony\Component\HttpFoundation\Request;
 
-    class Update{
+    class Update {
         private systemDocumentUpdateService $service;
 
-        public function __construct(systemDocumentUpdateService $service){
+        public function __construct(systemDocumentUpdateService $service) {
             $this->service = $service;
         }
 
@@ -20,7 +20,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(int $id, Request $request): systemDocument{
+        public function __invoke(int $id, Request $request): systemDocument {
             $idSystemTemplate = RequestService::getField($request, 'idSystemTemplate', false);
             $content = RequestService::getField($request, 'content', false);
             $dateCreate = RequestService::getField($request, 'dateCreate', false);

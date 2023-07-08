@@ -1,0 +1,6 @@
+App\Entity\systemSize:
+  attributes:
+    name:
+      groups: [ systemSize_read, systemSize_create, systemSize_update ]
+    type:
+      groups: [ systemSize_read, systemSize_create, systemSize_update ]

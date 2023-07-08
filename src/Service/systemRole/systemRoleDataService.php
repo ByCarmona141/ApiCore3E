@@ -8,7 +8,7 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemRoleDataService{
+    class systemRoleDataService {
         private systemRoleRepository $repository;
         private systemLogRegisterService $accesoService;
 
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function data(int $id): systemRole{
+        public function data(int $id): systemRole {
             $systemRole = $this->repository->findById($id);
             $data = [
                 'name' => $systemRole->getname(),

@@ -7,11 +7,9 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
     
-    class systemUserRepository extends BaseRepository
-    {
+    class systemUserRepository extends BaseRepository {
         
-        protected static function entityClass(): string
-        {
+        protected static function entityClass(): string {
             return systemUser::class;
         }
         
@@ -19,13 +17,11 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function save(systemUser $entity)
-        {
+        public function save(systemUser $entity) {
             return $this->saveEntity($entity);
         }
         
-        public function findOneByUsernameOrFail(string $usuario): systemUser
-        {
+        public function findOneByUsernameOrFail(string $usuario): systemUser {
             if (null === $usuario = $this->objectRepository->findOneBy(['user' => $usuario])) {
                 throw systemUserNotFoundException::fromUsername($usuario);
             }
@@ -33,8 +29,14 @@
             return $usuario;
         }
         
-        public function findById($id): systemUser
-        {
+        public function findById($id): systemUser {
             return $this->objectRepository->find($id);
+        }
+
+        /**
+         * @return array<systemUser>
+         */
+        public function findAll(): array {
+            return $this->objectRepository->findAll();
         }
     }

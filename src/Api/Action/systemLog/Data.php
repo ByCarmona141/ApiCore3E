@@ -7,10 +7,10 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class Data{
+    class Data {
         private systemLogDataService $service;
 
-        public function __construct(systemLogDataService $service){
+        public function __construct(systemLogDataService $service) {
             $this->service = $service;
         }
 
@@ -18,7 +18,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(int $id): systemLog{
+        public function __invoke(int $id): systemLog {
             return $this->service->data($id);
         }
     }

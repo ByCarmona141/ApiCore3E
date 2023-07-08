@@ -12,7 +12,7 @@
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\Routing\Annotation\Route;
     
-    class Datatable{
+    class Datatable {
         private EntityManagerInterface $entityManager;
         private ExtraColumn            $extraColumn;
         private RenderColumn           $renderColumn;
@@ -21,14 +21,14 @@
         public function __construct(EntityManagerInterface $entityManager,
                                     ExtraColumn            $extraColumn,
                                     RenderColumn           $renderColumn,
-                                    RenderRow              $renderRow){
+                                    RenderRow              $renderRow) {
             $this->entityManager = $entityManager;
             $this->extraColumn = $extraColumn;
             $this->renderColumn = $renderColumn;
             $this->renderRow = $renderRow;
         }
         
-        public function datatableController(Request $request): JsonResponse{
+        public function datatableController(Request $request): JsonResponse {
             $source = $request->get("serveSource");
             $function = $request->get("serveFunction");
             $body = json_decode($request->getContent(), true);
@@ -51,8 +51,9 @@
             $columnsDT = [];
             
             $columnsDT[] = $config['index']['name'] . ($config['index']['alias'] != '' ? ' as ' . $config['index']['alias'] : '');
-            foreach($config['columns'] as $column){
-                switch($column['type']){
+
+            foreach($config['columns'] as $column) {
+                switch($column['type']) {
                     case 1:
                         $columnsDT[] = $column['name'] . ($column['alias'] == '' ? '' : ' as ' . $column['alias']);
                         break;
@@ -65,13 +66,12 @@
             }
             $columnsDT = implode(", ", $columnsDT);
             $limitDT = '';
-            if($length != -1){
+            if($length != -1) {
                 $limitDT = "limit $start, $length";
             }
-            
-            if($draw == 1){
+            if($draw == 1) {
                 $orderDT = "order by {$config['order']}";
-            } else{
+            } else {
                 $fieldOrder = $config['columns'][$order[0]['column']]['type'] != 1 ? $config['index']['name'] : $config['columns'][$order[0]['column']]['name'];
                 
                 $orderDT = "order by {$fieldOrder} {$order[0]['dir']}";
@@ -80,16 +80,16 @@
             $group = $config['group'] != '' ? "group by {$config['group']}" : '';
             
             $searchDT = [];
-            if($search['value'] != ''){
-                foreach($config['columns'] as $column){
-                    if($column['type'] == 1){
+            if($search['value'] != '') {
+                foreach($config['columns'] as $column) {
+                    if($column['type'] == 1) {
                         $searchDT[] = "{$column['name']} LIKE '%{$search['value']}%'";
                     }
                 }
             }
             $searchDT = implode(' OR ', $searchDT);
             
-            if($whereDT != ''){
+            if($whereDT != '') {
                 $whereDT .= ' and ';
             }
             $whereDT .= ($searchDT != '') ? $searchDT : '1=1';
@@ -102,22 +102,23 @@
             $filterTotal = 0;
             $queryFilter = 'select found_rows() as total';
             $resultFilter = $this->entityManager->getConnection()->executeQuery($queryFilter);
-            if($resultFilter->rowCount() > 0){
+
+            if($resultFilter->rowCount() > 0) {
                 $recordFilter = $resultFilter->fetchAllAssociative();
                 $filterTotal = $recordFilter[0]['total'];
             }
             
             $data = [];
-            foreach($result as $record){
+            foreach($result as $record) {
                 $row = [];
                 
-                foreach($config['columns'] as $column){
-                    switch($column['type']){
+                foreach($config['columns'] as $column) {
+                    switch($column['type']) {
                         case 1:
                             $key = $column['alias'] != '' ? $column['alias'] : $column['name'];
-                            if($column['render'] != ''){
+                            if($column['render'] != '') {
                                 $row[] = $this->renderColumn::render($column['render'], $record[$key], $record);
-                            } else{
+                            } else {
                                 $row[] = $record[$key];
                             }
                             break;
@@ -128,7 +129,8 @@
                 }
                 $row['DT_RowId'] = "$tableDT{$record[$indexDT]}";
                 $row['DT_RowClass'] = "datatableRow";
-                if($config['renderRow'] != ''){
+
+                if($config['renderRow'] != '') {
                     $row['DT_RowClass'] .= ' ' . $this->renderRow::render($config['renderRow'], $record[$indexDT], $record);
                 }
                 $data[] = $row;
@@ -137,12 +139,13 @@
             $total = 0;
             $queryTotal = "select count(*) as total from {$config['table']['name']} as a";
             $resultTotal = $this->entityManager->getConnection()->executeQuery($queryTotal);
-            if($resultTotal->rowCount() > 0){
+
+            if($resultTotal->rowCount() > 0) {
                 $recordTotal = $resultTotal->fetchAllAssociative();
                 $total = $recordTotal[0]['total'];
             }
             
-            if($config['debug'] != 1){
+            if($config['debug'] != 1) {
                 $query = "";
             }
             

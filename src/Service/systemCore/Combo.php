@@ -7,10 +7,10 @@
     use Doctrine\ORM\EntityManagerInterface;
     use Symfony\Component\HttpFoundation\JsonResponse;
 
-    class Combo{
+    class Combo {
         private EntityManagerInterface $entityManager;
     
-        public function __construct(EntityManagerInterface $entityManager){
+        public function __construct(EntityManagerInterface $entityManager) {
             $this->entityManager = $entityManager;
         }
     
@@ -18,7 +18,7 @@
          * @throws Exception
          * @throws ExceptionDriver
          */
-        public function comboController(object $Class, $inText = false, ?array $Params = null): JsonResponse{
+        public function comboController(object $Class, $inText = false, ?array $Params = null): JsonResponse {
             $config = $Class->combo($inText, $Params);
             
             return new JsonResponse(

@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemIconUpdateService{
+    class systemIconUpdateService {
         private systemIconRepository $repository;
         private systemLogRegisterService $accesoService;
 
         public function __construct(systemIconRepository $repository,
-                                    systemLogRegisterService $accesoService){
+                                    systemLogRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function update(int $id, ?string $name): systemIcon{
+        public function update(int $id, ?string $name): systemIcon {
             $systemIcon = $this->repository->findById($id);
             $systemIcon->setname($name);
             $this->repository->save($systemIcon);

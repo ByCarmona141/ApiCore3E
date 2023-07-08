@@ -2,10 +2,9 @@
 
     namespace App\Model;
 
-    class systemRepositoryModel{
-
-        public function readDataTable($params = false): array{
-            if($params && is_array($params)){
+    class systemRepositoryModel {
+        public function readDataTable($params = false): array {
+            if($params && is_array($params)) {
                 extract($params, EXTR_OVERWRITE);
             }
 
@@ -80,10 +79,10 @@
             return $serverQuery;
         }
 
-        public function combo($inText = false): string{
-            if($inText){
+        public function combo($inText = false): string {
+            if($inText) {
                 $fields = 'name, name';
-            }else{
+            } else {
                 $fields = 'id, name';
             }
 

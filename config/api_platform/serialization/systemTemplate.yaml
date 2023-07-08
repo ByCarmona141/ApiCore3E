@@ -2,6 +2,8 @@ App\Entity\systemTemplate:
   attributes:
     name:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    json:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
     header:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
     body:
@@ -18,7 +20,13 @@ App\Entity\systemTemplate:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
     frontPage:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
-    script:
+    marginLeft:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
-    json:
+    marginRight:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    marginTop:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    marginBottom:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    script:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]

@@ -10,14 +10,14 @@
     /**
      * @deprecated
      */
-    class LogAccess{
+    class LogAccess {
         private CelaUsuario $usuario;
     
-        public function __construct(CelaUsuario $usuario){
+        public function __construct(CelaUsuario $usuario) {
             $this->usuario = $usuario;
         }
     
-        public static function RecordLog(string $table, int $idRecord, int $action, mixed $Data){
+        public static function RecordLog(string $table, int $idRecord, int $action, mixed $Data) {
         
         }
     }

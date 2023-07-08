@@ -9,10 +9,10 @@
     use Doctrine\ORM\ORMException;
     use Symfony\Component\HttpFoundation\Request;
 
-    class Register{
+    class Register {
         private systemUserRegisterService $service;
 
-        public function __construct(systemUserRegisterService $service){
+        public function __construct(systemUserRegisterService $service) {
             $this->service = $service;
         }
 
@@ -20,7 +20,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(Request $request): systemUser{
+        public function __invoke(Request $request): systemUser {
             $user = RequestService::getField($request, 'user', false);
             $password = RequestService::getField($request, 'password', false);
             $email = RequestService::getField($request, 'email', false);

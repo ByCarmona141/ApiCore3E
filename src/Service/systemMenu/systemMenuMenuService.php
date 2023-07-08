@@ -6,14 +6,14 @@
     use Doctrine\ORM\Query\Expr\Join;
     use Symfony\Component\HttpFoundation\Request;
     
-    class systemMenuMenuService{
+    class systemMenuMenuService {
         private systemMenuRepository $repository;
         
-        public function __construct(systemMenuRepository $repository){
+        public function __construct(systemMenuRepository $repository) {
             $this->repository = $repository;
         }
         
-        public function getMenu(Request $request): array{
+        public function getMenu(Request $request): array {
             $role = $request->get('role');
             
             $em = $this->repository->getEntityManager();
@@ -38,14 +38,14 @@
                      ->setParameter('role', $role);
             $parents = $qb->getQuery()->getResult();
             $menu = [];
-            foreach($parents as $parent){
+            foreach($parents as $parent) {
                 $menu[] = $this->matchResult($role, $parent);
             }
             
             return $menu;
         }
         
-        private function searchChild($role, $category): array{
+        private function searchChild($role, $category): array {
             $em = $this->repository->getEntityManager();
             
             $exp = $em->getExpressionBuilder();
@@ -72,14 +72,14 @@
             
             $childs = $qb->getQuery()->getResult();
             $menu = [];
-            foreach($childs as $child){
+            foreach($childs as $child) {
                 $menu[] = $this->matchResult($role, $child);
             }
             
             return $menu;
         }
         
-        private function matchResult(int $role, array $menu): array{
+        private function matchResult(int $role, array $menu): array {
             return match ($menu['idSystemTypeElement']) {
                 1 => [
                     'id'       => "id{$menu['id']}",

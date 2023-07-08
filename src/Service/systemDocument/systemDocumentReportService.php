@@ -19,6 +19,7 @@ class systemDocumentReportService {
     public function __construct(systemDocumentRepository $repository, systemTemplateRepository $systemTemplateRepository, systemLogRegisterService $accesoService) {
         $this->repository = $repository;
 
+        // Repositorio de systemTemplate
         $this->systemTemplateRepository = $systemTemplateRepository;
 
         // Guardamos el acceso en el systemLog
@@ -39,6 +40,7 @@ class systemDocumentReportService {
         // Template
         $template = file_get_contents('templates/body.html');
 
+        // Reemplazamos las etiquetas
         $FileContent = Functions::ReplaceContentPage(
             [
                 // Etiquetas
@@ -52,12 +54,12 @@ class systemDocumentReportService {
             $template);
 
         // Archivo con el contenido, Nombre del archivo, , , Funcion para la configuracion del wkhtmltopdf
-        $SourceFile = Functions::GeneratePDF($FileContent, false, false, [], function (Wkhtmltopdf $Wkhtmltopdf) {
+        $SourceFile = Functions::GeneratePDF($FileContent, false, false, [], function (Wkhtmltopdf $Wkhtmltopdf) use ($systemTemplate) {
             $Wkhtmltopdf->setMargins([
-                'left'   => 0,
-                'right'  => 0,
-                'top'    => 0,
-                'bottom' => 0,
+                'left'   => $systemTemplate->getMarginLeft(),
+                'right'  => $systemTemplate->getMarginRight(),
+                'top'    => $systemTemplate->getMarginTop(),
+                'bottom' => $systemTemplate->getMarginBottom(),
             ]);
         });
 

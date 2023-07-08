@@ -9,10 +9,10 @@
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\Routing\Annotation\Route;
     
-    class Combo{
+    class Combo {
         private EntityManagerInterface $entityManager;
         
-        public function __construct(EntityManagerInterface $entityManager){
+        public function __construct(EntityManagerInterface $entityManager) {
             $this->entityManager = $entityManager;
         }
         
@@ -23,11 +23,11 @@
          * @throws Exception
          * @throws ExceptionDriver
          */
-        public function comboController(Request $request): JsonResponse{
+        public function comboController(Request $request): JsonResponse {
             $source = $request->get('serveSource');
             $inText = $request->get('inText');
             
-            if($inText == 'false'){
+            if($inText == 'false') {
                 $inText = false;
             }
             

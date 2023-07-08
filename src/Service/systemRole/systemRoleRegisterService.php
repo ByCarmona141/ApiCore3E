@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemRoleRegisterService{
+    class systemRoleRegisterService {
         private systemRoleRepository $repository;
         private systemLogRegisterService $accesoService;
 
         public function __construct(systemRoleRepository $repository,
-                                    systemLogRegisterService $accesoService){
+                                    systemLogRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function create(?string $name, ?int $active): systemRole{
+        public function create(?string $name, ?int $active): systemRole {
             $systemRole = new systemRole($name, $active);
 
             $this->repository->save($systemRole);

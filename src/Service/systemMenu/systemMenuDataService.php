@@ -9,16 +9,14 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
     
-    class systemMenuDataService
-    {
+    class systemMenuDataService {
         private systemMenuRepository               $repository;
         private systemLogRegisterService           $accesoService;
         private systemPrivilegesUserRoleRepository $userRoleRepository;
         
         public function __construct(systemMenuRepository               $repository,
                                     systemLogRegisterService           $accesoService,
-                                    systemPrivilegesUserRoleRepository $userRoleRepository)
-        {
+                                    systemPrivilegesUserRoleRepository $userRoleRepository) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
             $this->userRoleRepository = $userRoleRepository;
@@ -28,8 +26,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function data(int $id): systemMenu
-        {
+        public function data(int $id): systemMenu {
             $systemMenu = $this->repository->findById($id);
             $data = [
                 'name'                => $systemMenu->getname(),

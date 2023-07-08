@@ -12,11 +12,11 @@
     use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\HttpFoundation\Request;
 
-    class Combo{
+    class Combo {
         private ComboService $combo;
         private systemConfigModel $model;
         
-        public function __construct(ComboService $combo, systemConfigModel $model){
+        public function __construct(ComboService $combo, systemConfigModel $model) {
             $this->combo = $combo;
             $this->model = $model;
         }
@@ -25,10 +25,10 @@
          * @throws ExceptionDBAL
          * @throws Exception
          */
-        public function __invoke(Request $request): JsonResponse{
+        public function __invoke(Request $request): JsonResponse {
             $inText = $request->get('inText');
             
-            if($inText == 'false'){
+            if($inText == 'false') {
                 $inText = false;
             }
             

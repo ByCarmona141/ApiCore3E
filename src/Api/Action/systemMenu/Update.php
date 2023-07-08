@@ -9,10 +9,10 @@
     use Doctrine\ORM\ORMException;
     use Symfony\Component\HttpFoundation\Request;
 
-    class Update{
+    class Update {
         private systemMenuUpdateService $service;
 
-        public function __construct(systemMenuUpdateService $service){
+        public function __construct(systemMenuUpdateService $service) {
             $this->service = $service;
         }
 
@@ -20,7 +20,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(int $id, Request $request): systemMenu{
+        public function __invoke(int $id, Request $request): systemMenu {
             $name = RequestService::getField($request, 'name', false);
             $description = RequestService::getField($request, 'description', false);
             $href = RequestService::getField($request, 'href', false);

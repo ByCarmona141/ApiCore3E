@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemDocumentDataService{
+    class systemDocumentDataService {
         private systemDocumentRepository $repository;
         private CelaAccesoRegisterService $accesoService;
 
         public function __construct(systemDocumentRepository $repository,
-                                    CelaAccesoRegisterService $accesoService){
+                                    CelaAccesoRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function data(int $id): systemDocument{
+        public function data(int $id): systemDocument {
             $systemDocument = $this->repository->findById($id);
             $data = [
                 'idSystemTemplate' => $systemDocument->getidSystemTemplate(),

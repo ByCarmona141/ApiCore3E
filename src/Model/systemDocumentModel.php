@@ -2,10 +2,9 @@
 
     namespace App\Model;
 
-    class systemDocumentModel{
-
-        public function readDataTable($params = false): array{
-            if($params && is_array($params)){
+    class systemDocumentModel {
+        public function readDataTable($params = false): array {
+            if($params && is_array($params)) {
                 extract($params, EXTR_OVERWRITE);
             }
 
@@ -25,31 +24,29 @@
                         'alias'  => '',
                         'extra'  => 'actions',
                         'render' => ''
-                    ], [
+                    ],
+                    [
                         'type'   => 1,
-                        'name'   => '(SELECT name FROM systemTemplate WHERE systemTemplate.id = systemDocument.idSystemTemplate)',
+                        'name'   => '(select name from systemTemplate where systemTemplate.id = systemDocument.idSystemTemplate)',
                         'alias'  => 'idSystemTemplate',
                         'extra'  => '',
                         'render' => ''
-                    ], [
+                    ],
+                    [
                         'type'   => 1,
                         'name'   => 'content',
                         'alias'  => '',
                         'extra'  => '',
                         'render' => ''
-                    ], [
+                    ],
+                    [
                         'type'   => 1,
                         'name'   => 'dateCreate',
                         'alias'  => '',
                         'extra'  => '',
                         'render' => ''
-                    ], [
-                        'type'   => 0,
-                        'name'   => '',
-                        'alias'  => '',
-                        'extra'  => 'reporte',
-                        'render' => ''
-                    ]
+                    ],
+                    
                 ],
                 'condition' => '',
                 'group'     => '',
@@ -61,10 +58,10 @@
             return $serverQuery;
         }
 
-        public function combo($inText = false): string{
-            if($inText){
+        public function combo($inText = false): string {
+            if($inText) {
                 $fields = 'idSystemTemplate, idSystemTemplate';
-            }else{
+            } else {
                 $fields = 'id, idSystemTemplate';
             }
 

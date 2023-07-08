@@ -7,10 +7,10 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class Delete{
+    class Delete {
         private systemRepositoryDeleteService $service;
 
-        public function __construct(systemRepositoryDeleteService $service){
+        public function __construct(systemRepositoryDeleteService $service) {
             $this->service = $service;
         }
 
@@ -18,7 +18,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(int $id): systemRepository{
+        public function __invoke(int $id): systemRepository {
             return $this->service->delete($id);
         }
     }

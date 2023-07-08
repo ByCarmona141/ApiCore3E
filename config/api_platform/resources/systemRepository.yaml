@@ -11,6 +11,13 @@ App\Entity\systemRepository:
         groups: [ systemRepository_create ]
       openapi_context:
         summary: Nuevo registro
+    postArchive:
+      method: POST
+      path: /systemRepository/archive
+      controller: App\Api\Action\systemRepository\DataArchive
+      deserialize: false
+      openapi_context:
+        summary: Obtenemos el archivo del Repositorio
     datatable:
       method: POST
       path: /systemRepository/{serveFunction}

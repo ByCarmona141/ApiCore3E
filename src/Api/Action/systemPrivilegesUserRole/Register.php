@@ -9,10 +9,10 @@
     use Doctrine\ORM\ORMException;
     use Symfony\Component\HttpFoundation\Request;
 
-    class Register{
+    class Register {
         private systemPrivilegesUserRoleRegisterService $service;
 
-        public function __construct(systemPrivilegesUserRoleRegisterService $service){
+        public function __construct(systemPrivilegesUserRoleRegisterService $service) {
             $this->service = $service;
         }
 
@@ -20,7 +20,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(Request $request): systemPrivilegesUserRole{
+        public function __invoke(Request $request): systemPrivilegesUserRole {
             $idSystemPrivileges = RequestService::getField($request, 'idSystemPrivileges', false);
             $objectSource = RequestService::getField($request, 'objectSource', false);
             $objectTupla = RequestService::getField($request, 'objectTupla', false);

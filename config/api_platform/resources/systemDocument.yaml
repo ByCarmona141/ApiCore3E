@@ -135,10 +135,3 @@ App\Entity\systemDocument:
       method: DELETE
       openapi_context:
         summary: Elimina el registro
-    report:
-      method: GET
-      path: /systemDocument/report/{id}
-      controller: App\Api\Action\systemDocument\Report
-      deserialize: false
-      openapi_context:
-        summary: Obtiene el PDF

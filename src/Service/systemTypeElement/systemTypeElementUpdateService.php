@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemTypeElementUpdateService{
+    class systemTypeElementUpdateService {
         private systemTypeElementRepository $repository;
         private systemLogRegisterService $accesoService;
 
         public function __construct(systemTypeElementRepository $repository,
-                                    systemLogRegisterService $accesoService){
+                                    systemLogRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function update(int $id, ?string $name): systemTypeElement{
+        public function update(int $id, ?string $name): systemTypeElement {
             $systemTypeElement = $this->repository->findById($id);
             $systemTypeElement->setname($name);
             $this->repository->save($systemTypeElement);

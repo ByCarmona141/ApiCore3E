@@ -7,10 +7,10 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class Data{
+    class Data {
         private systemPrivilegesUserRoleDataService $service;
 
-        public function __construct(systemPrivilegesUserRoleDataService $service){
+        public function __construct(systemPrivilegesUserRoleDataService $service) {
             $this->service = $service;
         }
 
@@ -18,7 +18,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(int $id): systemPrivilegesUserRole{
+        public function __invoke(int $id): systemPrivilegesUserRole {
             return $this->service->data($id);
         }
     }

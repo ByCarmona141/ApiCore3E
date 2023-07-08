@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemRoleDeleteService{
+    class systemRoleDeleteService {
         private systemRoleRepository $repository;
         private systemLogRegisterService $accesoService;
 
         public function __construct(systemRoleRepository $repository,
-                                    systemLogRegisterService $accesoService){
+                                    systemLogRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function delete(int $id): systemRole{
+        public function delete(int $id): systemRole {
             $systemRole = $this->repository->findById($id);
             $data = [
                 'name' => $systemRole->getname(),

@@ -7,9 +7,9 @@
     use Doctrine\ORM\ORMException;
     use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
-    class systemLogRepository extends BaseRepository{
+    class systemLogRepository extends BaseRepository {
 
-        protected static function entityClass(): string{
+        protected static function entityClass(): string {
             return systemLog::class;
         }
 
@@ -17,15 +17,22 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function save(systemLog $entity): void{
+        public function save(systemLog $entity): void {
             $this->saveEntity($entity);
         }
 
-        public function findById(int $id): systemLog{
-            if(null == $systemLog = $this->objectRepository->find($id)){
+        public function findById(int $id): systemLog {
+            if(null == $systemLog = $this->objectRepository->find($id)) {
                 throw new ConflictHttpException("No existe el registro de systemLog con id $id");
             }
 
             return $systemLog;
+        }
+
+        /**
+         * @return array<systemLog>
+         */
+        public function findAll(): array {
+            return $this->objectRepository->findAll();
         }
     }

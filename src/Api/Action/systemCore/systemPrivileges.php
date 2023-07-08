@@ -12,8 +12,7 @@
     use Symfony\Component\Routing\Annotation\Route;
     use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
     
-    class systemPrivileges
-    {
+    class systemPrivileges {
         
         private systemMenuRepository               $menuRepository;
         private systemPrivilegesUserRoleRepository $repository;
@@ -25,8 +24,7 @@
                                     systemPrivilegesUserRoleRepository $repository,
                                     systemPrivilegesRepository         $privilegesRepository,
                                     JWTTokenManagerInterface           $JWTTokenManager,
-                                    TokenStorageInterface              $tokenStorage)
-        {
+                                    TokenStorageInterface              $tokenStorage) {
             $this->menuRepository = $menuRepository;
             $this->repository = $repository;
             $this->JWTTokenManager = $JWTTokenManager;
@@ -38,8 +36,7 @@
          * @Route("/api/getPrivileges/{route}/{privilege}", methods={"GET"})
          * @throws JWTDecodeFailureException
          */
-        public function getPrivileges(string $route, int $privilege): JsonResponse
-        {
+        public function getPrivileges(string $route, int $privilege): JsonResponse {
             $token = $this->JWTTokenManager->decode($this->tokenStorage->getToken());
             $menu = $this->menuRepository->findByHref($route);
             $privilege = $this->repository->getRolePrivilege($token['idSystemRole'], $menu->getId(), $privilege);
@@ -55,8 +52,7 @@
          * @Route("/api/getPrivilegesRole/{route}", methods={"GET"})
          * @throws JWTDecodeFailureException
          */
-        public function getPrivilegesRole(string $route, bool $extra = false): JsonResponse | array
-        {
+        public function getPrivilegesRole(string $route, bool $extra = false): JsonResponse | array {
             $token = $this->JWTTokenManager->decode($this->tokenStorage->getToken());
             
             $menu = $this->menuRepository->findByHref($route);
@@ -70,14 +66,14 @@
             foreach ($privileges as $privilege) {
                 $idPrivilege = $privilege->getId();
                 
-                if($idRole == 0){
+                if($idRole == 0) {
                     $Privileges[$idPrivilege] = true;
                     $this->isCrud($idPrivilege, true, $Privileges);
-                }else{
-                    if($this->repository->getPrivilegeByPrivilegeRoleMenu($idPrivilege, $idRole, $idMenu)){
+                } else {
+                    if($this->repository->getPrivilegeByPrivilegeRoleMenu($idPrivilege, $idRole, $idMenu)) {
                         $Privileges[$idPrivilege] = true;
                         $this->isCrud($idPrivilege, true, $Privileges);
-                    }else{
+                    } else {
                         $Privileges[$idPrivilege] = false;
                         $this->isCrud($idPrivilege, false, $Privileges);
                     }
@@ -87,8 +83,7 @@
             return ($extra ? $Privileges : new JsonResponse($Privileges));
         }
         
-        private function isCrud(int $idPrivilege, bool $privilege, array &$privileges)
-        {
+        private function isCrud(int $idPrivilege, bool $privilege, array &$privileges) {
             switch ($idPrivilege) {
                 case 2:
                     $privileges['create'] = $privilege;

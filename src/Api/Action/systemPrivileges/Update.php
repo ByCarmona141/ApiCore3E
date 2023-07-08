@@ -9,10 +9,10 @@
     use Doctrine\ORM\ORMException;
     use Symfony\Component\HttpFoundation\Request;
 
-    class Update{
+    class Update {
         private systemPrivilegesUpdateService $service;
 
-        public function __construct(systemPrivilegesUpdateService $service){
+        public function __construct(systemPrivilegesUpdateService $service) {
             $this->service = $service;
         }
 
@@ -20,7 +20,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(int $id, Request $request): systemPrivileges{
+        public function __invoke(int $id, Request $request): systemPrivileges {
             $name = RequestService::getField($request, 'name', false);
             $description = RequestService::getField($request, 'description', false);
 

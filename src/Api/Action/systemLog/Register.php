@@ -9,10 +9,10 @@
     use Doctrine\ORM\ORMException;
     use Symfony\Component\HttpFoundation\Request;
 
-    class Register{
+    class Register {
         private systemLogRegisterService $service;
 
-        public function __construct(systemLogRegisterService $service){
+        public function __construct(systemLogRegisterService $service) {
             $this->service = $service;
         }
 
@@ -20,7 +20,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(Request $request): systemLog{
+        public function __invoke(Request $request): systemLog {
             $entity = RequestService::getField($request, 'entity', false);
             $tuple = RequestService::getField($request, 'tuple', false);
             $date = RequestService::getField($request, 'date', false);

@@ -4,7 +4,7 @@
         <id name="id">
             <generator strategy="IDENTITY"/>
         </id>
-        <field name="idSystemTemplate" type="integer" nullable="true" column="`idSystemTemplate`"/>
+        <field name="idSystemTemplate" type="integer" column="`idSystemTemplate`"/>
         <field name="content" type="text" nullable="true" column="`content`"/>
         <field name="dateCreate" type="datetime" nullable="true" column="`dateCreate`"/>
     </entity>

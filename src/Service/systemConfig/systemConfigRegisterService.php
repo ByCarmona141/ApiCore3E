@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemConfigRegisterService{
+    class systemConfigRegisterService {
         private systemConfigRepository $repository;
         private systemLogRegisterService $accesoService;
 
         public function __construct(systemConfigRepository $repository,
-                                    systemLogRegisterService $accesoService){
+                                    systemLogRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function create(?string $name, ?string $value, ?string $tipeofHTML, ?int $category, string $configKey): systemConfig{
+        public function create(?string $name, ?string $value, ?string $tipeofHTML, ?int $category, string $configKey): systemConfig {
             $systemConfig = new systemConfig($name, $value, $tipeofHTML, $category, $configKey);
 
             $this->repository->save($systemConfig);

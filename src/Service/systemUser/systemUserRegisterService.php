@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemUserRegisterService{
+    class systemUserRegisterService {
         private systemUserRepository $repository;
         private systemLogRegisterService $accesoService;
 
         public function __construct(systemUserRepository $repository,
-                                    systemLogRegisterService $accesoService){
+                                    systemLogRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function create(?string $user, ?string $password, ?string $email, ?string $selfie, ?string $tag, ?string $fullName, ?string $address, ?string $phone, ?int $area, ?int $idOffice, ?int $idSystemUserStatus, ?int $idSystemRole, ?int $idEmployee, ?int $tries, ?string $position, ?string $skype): systemUser{
+        public function create(?string $user, ?string $password, ?string $email, ?string $selfie, ?string $tag, ?string $fullName, ?string $address, ?string $phone, ?int $area, ?int $idOffice, ?int $idSystemUserStatus, ?int $idSystemRole, ?int $idEmployee, ?int $tries, ?string $position, ?string $skype): systemUser {
             $systemUser = new systemUser($user, $password, $email, $selfie, $tag, $fullName, $address, $phone, $area, $idOffice, $idSystemUserStatus, $idSystemRole, $idEmployee, $tries, $position, $skype);
 
             $this->repository->save($systemUser);

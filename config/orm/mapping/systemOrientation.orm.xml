@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Entity\systemOrientation" table="systemOrientation">
+        <id name="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="name" length="32" nullable="false" column="`name`"/>
+        <field name="type" length="32" nullable="false" column="`type`"/>
+    </entity>
+</doctrine-mapping>

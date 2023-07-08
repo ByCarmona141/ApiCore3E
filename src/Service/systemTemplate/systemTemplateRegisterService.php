@@ -4,16 +4,16 @@
 
     use App\Entity\systemTemplate;
     use App\Repository\systemTemplateRepository;
-    use App\Service\systemLog\systemLogRegisterService as CelaAccesoRegisterService;
+    use App\Service\systemLog\systemLogRegisterService;
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemTemplateRegisterService{
+    class systemTemplateRegisterService {
         private systemTemplateRepository $repository;
-        private CelaAccesoRegisterService $accesoService;
+        private systemLogRegisterService $accesoService;
 
         public function __construct(systemTemplateRepository $repository,
-                                    CelaAccesoRegisterService $accesoService){
+                                    systemLogRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,23 +22,27 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function create(?string $name, ?string $header, ?string $body, ?string $footer, ?string $orientation, ?string $size, ?int $headerSpacing, ?int $footerSpacing, ?int $frontPage, ?string $script, ?string $json): systemTemplate{
-            $systemTemplate = new systemTemplate($name, $header, $body, $footer, $orientation, $size, $headerSpacing, $footerSpacing, $frontPage, $script, $json);
+        public function create(string $name, ?string $json, ?string $header, string $body, ?string $footer, int $orientation, int $size, ?int $headerSpacing, ?int $footerSpacing, ?string $frontPage, ?int $marginLeft, ?int $marginRight, ?int $marginTop, ?int $marginBottom, ?string $script): systemTemplate {
+            $systemTemplate = new systemTemplate($name, $json, $header, $body, $footer, $orientation, $size, $headerSpacing, $footerSpacing, $frontPage, $marginLeft, $marginRight, $marginTop, $marginBottom, $script);
 
             $this->repository->save($systemTemplate);
 
             $data = [
-                'name' => $systemTemplate->getname(),
-                'header' => $systemTemplate->getheader(),
-                'body' => $systemTemplate->getbody(),
-                'footer' => $systemTemplate->getfooter(),
-                'orientation' => $systemTemplate->getorientation(),
-                'size' => $systemTemplate->getsize(),
-                'headerSpacing' => $systemTemplate->getheaderSpacing(),
-                'footerSpacing' => $systemTemplate->getfooterSpacing(),
-                'frontPage' => $systemTemplate->getfrontPage(),
-                'script' => $systemTemplate->getscript(),
-                'json' => $systemTemplate->getjson()
+                'name' => $systemTemplate->getName(),
+                'json' => $systemTemplate->getJson(),
+                'header' => $systemTemplate->getHeader(),
+                'body' => $systemTemplate->getBody(),
+                'footer' => $systemTemplate->getFooter(),
+                'orientation' => $systemTemplate->getOrientation(),
+                'size' => $systemTemplate->getSize(),
+                'headerSpacing' => $systemTemplate->getHeaderSpacing(),
+                'footerSpacing' => $systemTemplate->getFooterSpacing(),
+                'frontPage' => $systemTemplate->getFrontPage(),
+                'marginLeft' => $systemTemplate->getMarginLeft(),
+                'marginRight' => $systemTemplate->getMarginRight(),
+                'marginTop' => $systemTemplate->getMarginTop(),
+                'marginBottom' => $systemTemplate->getMarginBottom(),
+                'script' => $systemTemplate->getScript()
             ];
             $this->accesoService->create('systemTemplate', $systemTemplate->getId(), 2, $data);
 

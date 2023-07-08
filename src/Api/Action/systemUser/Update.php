@@ -9,10 +9,10 @@
     use Doctrine\ORM\ORMException;
     use Symfony\Component\HttpFoundation\Request;
 
-    class Update{
+    class Update {
         private systemUserUpdateService $service;
 
-        public function __construct(systemUserUpdateService $service){
+        public function __construct(systemUserUpdateService $service) {
             $this->service = $service;
         }
 
@@ -20,7 +20,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(int $id, Request $request): systemUser{
+        public function __invoke(int $id, Request $request): systemUser {
             $user = RequestService::getField($request, 'user', false);
             $password = RequestService::getField($request, 'password', false);
             $email = RequestService::getField($request, 'email', false);

@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemPrivilegesDataService{
+    class systemPrivilegesDataService {
         private systemPrivilegesRepository $repository;
         private systemLogRegisterService $accesoService;
 
         public function __construct(systemPrivilegesRepository $repository,
-                                    systemLogRegisterService $accesoService){
+                                    systemLogRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function data(int $id): systemPrivileges{
+        public function data(int $id): systemPrivileges {
             $systemPrivileges = $this->repository->findById($id);
             $data = [
                 'name' => $systemPrivileges->getname(),

@@ -102,9 +102,8 @@
                     break;
                 case 'reporte':
                     $column = "<div align='center'>
-                                    <a class='btn btn-info btn-sm reporte'
-                                        style='padding: 0.15rem 0.35rem;
-    font-size: 0.6rem;'
+                                    <a class='btn btn-info btn-sm text-light reporte'
+                                        style='padding: 0.15rem 0.35rem; font-size: 0.6rem;'
                                         index='$index'>
                                         <i class='fa fa-file-pdf'></i>
                                     </a>

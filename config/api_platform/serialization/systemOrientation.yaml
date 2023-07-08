@@ -1,0 +1,6 @@
+App\Entity\systemOrientation:
+  attributes:
+    name:
+      groups: [ systemOrientation_read, systemOrientation_create, systemOrientation_update ]
+    type:
+      groups: [ systemOrientation_read, systemOrientation_create, systemOrientation_update ]

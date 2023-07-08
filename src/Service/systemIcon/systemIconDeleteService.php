@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemIconDeleteService{
+    class systemIconDeleteService {
         private systemIconRepository $repository;
         private systemLogRegisterService $accesoService;
 
         public function __construct(systemIconRepository $repository,
-                                    systemLogRegisterService $accesoService){
+                                    systemLogRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function delete(int $id): systemIcon{
+        public function delete(int $id): systemIcon {
             $systemIcon = $this->repository->findById($id);
             $data = [
                 'name' => $systemIcon->getname()

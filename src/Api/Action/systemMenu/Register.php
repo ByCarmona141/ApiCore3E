@@ -9,10 +9,10 @@
     use Doctrine\ORM\ORMException;
     use Symfony\Component\HttpFoundation\Request;
 
-    class Register{
+    class Register {
         private systemMenuRegisterService $service;
 
-        public function __construct(systemMenuRegisterService $service){
+        public function __construct(systemMenuRegisterService $service) {
             $this->service = $service;
         }
 
@@ -20,7 +20,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(Request $request): systemMenu{
+        public function __invoke(Request $request): systemMenu {
             $name = RequestService::getField($request, 'name', false);
             $description = RequestService::getField($request, 'description', false);
             $href = RequestService::getField($request, 'href', false);

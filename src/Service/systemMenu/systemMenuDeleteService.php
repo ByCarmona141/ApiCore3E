@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemMenuDeleteService{
+    class systemMenuDeleteService {
         private systemMenuRepository $repository;
         private systemLogRegisterService $accesoService;
 
         public function __construct(systemMenuRepository $repository,
-                                    systemLogRegisterService $accesoService){
+                                    systemLogRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function delete(int $id): systemMenu{
+        public function delete(int $id): systemMenu {
             $systemMenu = $this->repository->findById($id);
             $data = [
                 'name' => $systemMenu->getname(),

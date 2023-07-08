@@ -7,11 +7,10 @@
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\Routing\Annotation\Route;
     
-    class systemMenu{
-        
+    class systemMenu {
         private systemMenuMenuService $service;
         
-        public function __construct(systemMenuMenuService $service){
+        public function __construct(systemMenuMenuService $service) {
             $this->service = $service;
         }
         
@@ -20,7 +19,7 @@
          * @param Request $request
          * @return JsonResponse
          */
-        public function getMen_u(Request $request): JsonResponse{
+        public function getMen_u(Request $request): JsonResponse {
             return new JsonResponse($this->service->getMenu($request));
         }
     }

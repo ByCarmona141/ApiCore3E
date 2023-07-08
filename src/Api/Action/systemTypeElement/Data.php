@@ -7,10 +7,10 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class Data{
+    class Data {
         private systemTypeElementDataService $service;
 
-        public function __construct(systemTypeElementDataService $service){
+        public function __construct(systemTypeElementDataService $service) {
             $this->service = $service;
         }
 
@@ -18,7 +18,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function __invoke(int $id): systemTypeElement{
+        public function __invoke(int $id): systemTypeElement {
             return $this->service->data($id);
         }
     }

@@ -8,12 +8,12 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
 
-    class systemDocumentUpdateService{
+    class systemDocumentUpdateService {
         private systemDocumentRepository $repository;
         private CelaAccesoRegisterService $accesoService;
 
         public function __construct(systemDocumentRepository $repository,
-                                    CelaAccesoRegisterService $accesoService){
+                                    CelaAccesoRegisterService $accesoService) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
         }
@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function update(int $id, ?int $idSystemTemplate, ?string $content, ?\DateTime $dateCreate): systemDocument{
+        public function update(int $id, int $idSystemTemplate, ?string $content, ?\DateTime $dateCreate): systemDocument {
             $systemDocument = $this->repository->findById($id);
             $systemDocument->setidSystemTemplate($idSystemTemplate);
             $systemDocument->setcontent($content);

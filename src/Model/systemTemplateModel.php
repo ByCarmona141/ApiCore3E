@@ -2,10 +2,9 @@
 
     namespace App\Model;
 
-    class systemTemplateModel{
-
-        public function readDataTable($params = false): array{
-            if($params && is_array($params)){
+    class systemTemplateModel {
+        public function readDataTable($params = false): array {
+            if($params && is_array($params)) {
                 extract($params, EXTR_OVERWRITE);
             }
 
@@ -35,6 +34,13 @@
                     ],
                     [
                         'type'   => 1,
+                        'name'   => 'json',
+                        'alias'  => '',
+                        'extra'  => '',
+                        'render' => ''
+                    ],
+                    [
+                        'type'   => 1,
                         'name'   => 'header',
                         'alias'  => '',
                         'extra'  => '',
@@ -56,15 +62,15 @@
                     ],
                     [
                         'type'   => 1,
-                        'name'   => 'orientation',
-                        'alias'  => '',
+                        'name'   => '(select name from systemOrientation where systemOrientation.id = systemTemplate.orientation)',
+                        'alias'  => 'orientation',
                         'extra'  => '',
                         'render' => ''
                     ],
                     [
                         'type'   => 1,
-                        'name'   => 'size',
-                        'alias'  => '',
+                        'name'   => '(select name from systemSize where systemSize.id = systemTemplate.size)',
+                        'alias'  => 'size',
                         'extra'  => '',
                         'render' => ''
                     ],
@@ -96,13 +102,6 @@
                         'extra'  => '',
                         'render' => ''
                     ],
-                    [
-                        'type'   => 1,
-                        'name'   => 'json',
-                        'alias'  => '',
-                        'extra'  => '',
-                        'render' => ''
-                    ],
                     
                 ],
                 'condition' => '',
@@ -115,10 +114,10 @@
             return $serverQuery;
         }
 
-        public function combo($inText = false): string{
-            if($inText){
+        public function combo($inText = false): string {
+            if($inText) {
                 $fields = 'name, name';
-            }else{
+            } else {
                 $fields = 'id, name';
             }
 

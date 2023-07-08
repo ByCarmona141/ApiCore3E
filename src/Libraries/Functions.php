@@ -20,7 +20,7 @@
             $SourceFile = '';
             try{
                 $Name = ($FileName !== false && $FileName != '' ? $FileName : rand(10000000, 99999999) . '.pdf');
-                $Source = ($Savein !== false && $Savein != '' ? $Savein : 'repository/temporal/');
+                $Source = ($Savein !== false && $Savein != '' ? $Savein : 'repository/temporary/');
             
                 if(!isset($PDFConfig['Constructor']) || count($PDFConfig['Constructor']) <= 0){
                     $PDFConfig['Constructor'] = array(

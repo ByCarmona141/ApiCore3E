@@ -10,8 +10,7 @@
     use Doctrine\ORM\OptimisticLockException;
     use Doctrine\ORM\ORMException;
     
-    class systemMenuUpdateService
-    {
+    class systemMenuUpdateService {
         private systemMenuRepository                    $repository;
         private systemLogRegisterService                $accesoService;
         private systemPrivilegesUserRoleRegisterService $userRoleRegister;
@@ -20,8 +19,7 @@
         public function __construct(systemMenuRepository                    $repository,
                                     systemLogRegisterService                $accesoService,
                                     systemPrivilegesUserRoleRegisterService $userRoleRegister,
-                                    systemPrivilegesUserRoleRepository      $userRoleRepository)
-        {
+                                    systemPrivilegesUserRoleRepository      $userRoleRepository) {
             $this->repository = $repository;
             $this->accesoService = $accesoService;
             $this->userRoleRegister = $userRoleRegister;
@@ -32,8 +30,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function update(int $id, ?string $name, ?string $description, ?string $href, ?int $idSystemIcon, ?int $category, ?int $priority, ?int $idSystemTypeElement, mixed $roles = null): systemMenu
-        {
+        public function update(int $id, ?string $name, ?string $description, ?string $href, ?int $idSystemIcon, ?int $category, ?int $priority, ?int $idSystemTypeElement, mixed $roles = null): systemMenu {
             $systemMenu = $this->repository->findById($id);
             $systemMenu->setname($name);
             $systemMenu->setdescription($description);
