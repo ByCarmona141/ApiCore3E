@@ -1,0 +1,26 @@
+App\Entity\systemTemplateFrontPage:
+  attributes:
+    name:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    header:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    body:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    footer:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    idSystemOrientation:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    idSystemSize:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    headerSpacing:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    footerSpacing:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    marginLeft:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    marginRight:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    marginTop:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]
+    marginBottom:
+      groups: [ systemTemplateFrontPage_read, systemTemplateFrontPage_create, systemTemplateFrontPage_update ]

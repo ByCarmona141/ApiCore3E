@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Entity\systemTemplateFrontPage" table="systemTemplateFrontPage">
+        <id name="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="name" length="32" nullable="false" column="`name`"/>
+        <field name="header" type="text" nullable="true" column="`header`"/>
+        <field name="body" type="text" nullable="false" column="`body`"/>
+        <field name="footer" type="text" nullable="true" column="`footer`"/>
+        <field name="idSystemOrientation" type="integer" nullable="false" column="`idSystemOrientation`"/>
+        <field name="idSystemSize" type="integer" nullable="false" column="`idSystemSize`"/>
+        <field name="headerSpacing" type="integer" nullable="true" column="`headerSpacing`"/>
+        <field name="footerSpacing" type="integer" nullable="true" column="`footerSpacing`"/>
+        <field name="marginLeft" type="integer" nullable="true" column="`marginLeft`"/>
+        <field name="marginRight" type="integer" nullable="true" column="`marginRight`"/>
+        <field name="marginTop" type="integer" nullable="true" column="`marginTop`"/>
+        <field name="marginBottom" type="integer" nullable="true" column="`marginBottom`"/>
+    </entity>
+</doctrine-mapping>
