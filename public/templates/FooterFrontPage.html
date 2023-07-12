@@ -1,10 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FOOTER</title>
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="../../libraries/bootstrap/bootstrap.min.css">
+
+    <!-- FONTAWESOME -->
+    <script src="../../libraries/fontawesome/fontawesome.js"></script>
+
+    <script>
+        function dynvar() {
+            var vars = {};
+            var x = document.location.search.substring(1).split('&');
+
+            for (var i in x) {
+                var z = x[i].split('=',2);
+
+                if (!vars[z[0]]) {
+                    vars[z[0]] = unescape(z[1]);
+                }
+            }
+
+            var vars_title = {};
+            var x = vars.doctitle.split('/*/');
+
+            for (var i in x) {
+                var z = x[i].split(':',2);
+
+                if (!vars_title[z[0]]) {
+                    vars_title[z[0]] = unescape(z[1]);
+                }
+            }
+
+            // document.getElementById('paginate').innerHTML = 'P&aacute;gina ' + vars.page + ' de ' + vars.topage;
+
+            if (vars.page > 1) {
+                document.getElementById('footer').innerHTML = '<!--##FOOTER##-->';
+                document.getElementById('paginate').innerHTML = 'P&aacute;gina ' + vars.page + ' de ' + vars.topage;
+            }
+        }
+    </script>
 </head>
-<body>
-$END$
+<body style="margin: 0px;" onload="dynvar();">
+    <div style="width: 90%;">
+        <div style="width: 85%;" class="d-inline-block" id="footer">
+
+        </div>
+        <div style="width: 13%;" class="d-inline-block float-end text-end" id="paginate">
+
+        </div>
+    </div>
+
+    <scrip src="../../libraries/bootstrap/bootstrap.bundle.min.js"></scrip>
 </body>
 </html>

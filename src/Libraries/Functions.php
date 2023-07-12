@@ -4,7 +4,7 @@
 
     class Functions
     {
-        static function ReplaceContentPage($Etiqueta, $Salida = false, $Pagina = false){
+        static function ReplaceContentPage($Etiqueta, $Salida = false, $Pagina = false) {
             if(is_array($Etiqueta)){
                 extract($Etiqueta, EXTR_OVERWRITE);
             }
@@ -12,22 +12,22 @@
             return str_replace($Etiqueta, $Salida, $Pagina);
         }
     
-        static function GeneratePDF($FileContend, $FileName = false, $Savein = false, $PDFConfig = array(), $callback = false): array{
-            if(is_array($FileContend)){
+        static function GeneratePDF($FileContend, $FileName = false, $Savein = false, $PDFConfig = array(), $callback = false): array {
+            if(is_array($FileContend)) {
                 extract($FileContend, EXTR_OVERWRITE);
             }
         
             $SourceFile = '';
-            try{
+            try {
                 $Name = ($FileName !== false && $FileName != '' ? $FileName : rand(10000000, 99999999) . '.pdf');
                 $Source = ($Savein !== false && $Savein != '' ? $Savein : 'repository/temporary/');
             
-                if(!isset($PDFConfig['Constructor']) || count($PDFConfig['Constructor']) <= 0){
+                if(!isset($PDFConfig['Constructor']) || count($PDFConfig['Constructor']) <= 0) {
                     $PDFConfig['Constructor'] = array(
                         'path' => $Source,
                         // 'FooterStyleRight' => 'Pag. [page] de [toPage]'
                     );
-                }else{
+                } else {
                     $PDFConfig['Constructor']['path'] = (isset($PDFConfig['Constructor']['path']) && $PDFConfig['Constructor']['path'] != '' ? $PDFConfig['Constructor']['path'] : $Source);
                 }
             
@@ -61,6 +61,34 @@
             
                 $SourceFile = $Source . $Name;
             
+                return [
+                    'status'     => 'success',
+                    'sourceFile' => $SourceFile,
+                    'title'      => $Name
+                ];
+            }catch(Exception $e){
+                return [
+                    'status' => 'error',
+                    'error'  => $e->getMessage()
+                ];
+            }
+        }
+
+        // (Contenido del archivo, tipo de archivo: .html, .php, etc, Nombre del archivo, )
+        static function GenerateArchive($FileContend, $TypeArchive, $FileName = false, $Savein = false): array {
+            if(is_array($FileContend)) {
+                extract($FileContend, EXTR_OVERWRITE);
+            }
+
+            $SourceFile = '';
+            try {
+                $Name = ($FileName !== false && $FileName != '' ? $FileName : rand(10000000, 99999999) . $TypeArchive);
+                $Source = ($Savein !== false && $Savein != '' ? $Savein : 'repository/temporary/');
+
+                file_put_contents($Source . $Name, $FileContend);
+
+                $SourceFile = $Source . $Name;
+
                 return [
                     'status'     => 'success',
                     'sourceFile' => $SourceFile,

@@ -5,24 +5,24 @@
     use App\Api\Action\systemCore\systemPrivileges;
     use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException;
     
-    class ExtraColumn{
+    class ExtraColumn {
         private systemPrivileges $privileges;
         
-        public function __construct(systemPrivileges $privileges){
+        public function __construct(systemPrivileges $privileges) {
             $this->privileges = $privileges;
         }
         
         /**
          * @throws JWTDecodeFailureException
          */
-        public function extra($index, $extra, $table): string{
+        public function extra($index, $extra, $table): string {
             $column = '';
-            switch($extra){
+            switch($extra) {
                 case 'actions':
                     $privileges = $this->privileges->getPrivilegesRole($table, true);
                     
                     $edit = "";
-                    if(isset($privileges['5']) && $privileges['5']){
+                    if(isset($privileges['5']) && $privileges['5']) {
                         $edit = "<a class='btn btn-warning btn-sm text-light edit'
                                index='$index'
                                style='padding: 0.15rem 0.35rem;
@@ -32,7 +32,7 @@
                     }
                     
                     $delete = "";
-                    if(isset($privileges['3']) && $privileges['3']){
+                    if(isset($privileges['3']) && $privileges['3']) {
                         $delete = "<a class='btn btn-danger btn-sm text-light delete'
                                 index='$index'
                                 style='padding: 0.15rem 0.35rem;
@@ -42,7 +42,7 @@
                     }
                     
                     $repository = "";
-                    if(isset($privileges['6']) && $privileges['6']){
+                    if(isset($privileges['6']) && $privileges['6']) {
                         $repository = "<a class='btn btn-info text-light btn-sm repository'
                                 index='$index'
                                 style='padding: 0.15rem 0.35rem;
@@ -100,9 +100,9 @@
                 case 'privileges':
                     $column = "<div align='center'><a class='btn btn-sm btn-info privileges' index='$index'><i class='fa fa-share'></i></a> </div>";
                     break;
-                case 'reporte':
+                case 'report':
                     $column = "<div align='center'>
-                                    <a class='btn btn-info btn-sm text-light reporte'
+                                    <a class='btn btn-danger btn-sm text-light report'
                                         style='padding: 0.15rem 0.35rem; font-size: 0.6rem;'
                                         index='$index'>
                                         <i class='fa fa-file-pdf'></i>

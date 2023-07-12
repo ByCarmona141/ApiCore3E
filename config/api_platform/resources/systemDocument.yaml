@@ -121,6 +121,14 @@ App\Entity\systemDocument:
         groups: [ systemDocument_read ]
       openapi_context:
         summary: Obtiene la informacion del registro
+    getReport:
+      method: GET
+      path: /systemDocument/report/{id}
+      controller: App\Api\Action\systemDocument\Report
+      denormalization_context:
+        groups: [ systemDocument_read ]
+      openapi_context:
+        summary: Genera el reporte con la informacion del registro
     put:
       method: PUT
       path: /systemDocument/{id}

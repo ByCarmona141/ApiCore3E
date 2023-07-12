@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-04-2023 a las 01:45:52
+-- Tiempo de generación: 11-07-2023 a las 21:18:30
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.0.25
 
@@ -93,10 +93,17 @@ INSERT INTO `systemConfig` (`id`, `configKey`, `name`, `value`, `tipeofHTML`, `c
 
 CREATE TABLE `systemDocument` (
   `id` int(10) UNSIGNED NOT NULL,
-  `idSystemTemplate` int(10) UNSIGNED DEFAULT NULL COMMENT 'Id de la plantilla',
+  `idSystemTemplate` int(10) UNSIGNED NOT NULL,
   `content` longtext DEFAULT NULL COMMENT 'Contenido del documento esto es un json',
   `dateCreate` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `systemDocument`
+--
+
+INSERT INTO `systemDocument` (`id`, `idSystemTemplate`, `content`, `dateCreate`) VALUES
+(1, 1, '{\n\"Checkbox\": {\n    \"dynamic\": \"El campo dynamic si es true es dinamico y si es false es estatico\",\n    \"class\": \"form-check\",\n    \"checked\": \"\",\n    \"id\": \"Checkbox\",\n    \"label\": \"Checkbox\",\n    \"name\": \"\",\n    \"placeholder\": \"Checkbox\",\n    \"required\": \"\",\n    \"tag\": \"<!--##DATA##-->\",\n    \"type\": \"checkbox\",\n    \"value\": \"datos de prueba para el documento\"\n  }\n}', NULL);
 
 -- --------------------------------------------------------
 
@@ -3663,7 +3670,104 @@ INSERT INTO `systemLog` (`id`, `entity`, `tuple`, `date`, `data`, `idSystemUser`
 (13092, 'systemMenu', '27', '2023-04-18 02:08:20', '{\n    \"name\": \"Iconos\",\n    \"description\": null,\n    \"href\": \"systemIcon\",\n    \"idSystemIcon\": 510,\n    \"category\": 38,\n    \"priority\": 40,\n    \"idSystemTypeElement\": 2\n}', 1, 4, NULL, NULL, NULL),
 (13093, 'systemPrivilegesUserRole', '2696', '2023-04-18 02:08:28', '{\n    \"idSystemPrivileges\": 1,\n    \"objectSource\": \"1\",\n    \"objectTupla\": 27,\n    \"active\": 1,\n    \"objetcAccess\": 1\n}', 1, 2, NULL, NULL, NULL),
 (13094, 'systemMenu', '27', '2023-04-18 02:08:28', '{\n    \"name\": \"Iconos\",\n    \"description\": null,\n    \"href\": \"systemIcon\",\n    \"idSystemIcon\": 510,\n    \"category\": 5,\n    \"priority\": 40,\n    \"idSystemTypeElement\": 2\n}', 1, 5, NULL, NULL, NULL),
-(13095, 'systemMenu', '38', '2023-04-18 02:09:18', '{\n    \"name\": \"Catalogo de Menu\",\n    \"description\": null,\n    \"href\": null,\n    \"idSystemIcon\": 460,\n    \"category\": 5,\n    \"priority\": 40,\n    \"idSystemTypeElement\": 1\n}', 1, 3, NULL, NULL, NULL);
+(13095, 'systemMenu', '38', '2023-04-18 02:09:18', '{\n    \"name\": \"Catalogo de Menu\",\n    \"description\": null,\n    \"href\": null,\n    \"idSystemIcon\": 460,\n    \"category\": 5,\n    \"priority\": 40,\n    \"idSystemTypeElement\": 1\n}', 1, 3, NULL, NULL, NULL),
+(13096, 'systemPrivilegesUserRole', '2857', '2023-04-22 01:22:49', '{\n    \"idSystemPrivileges\": 1,\n    \"objectSource\": \"1\",\n    \"objectTupla\": 39,\n    \"active\": 1,\n    \"objetcAccess\": 1\n}', 1, 2, NULL, NULL, NULL),
+(13097, 'systemMenu', '39', '2023-04-22 01:22:49', '{\n    \"name\": \"Catalogo de Documento\",\n    \"description\": null,\n    \"href\": null,\n    \"idSystemIcon\": 203,\n    \"category\": 39,\n    \"priority\": 40,\n    \"idSystemTypeElement\": 1,\n    \"roles\": [\n        1\n    ]\n}', 1, 2, NULL, NULL, NULL),
+(13098, 'systemPrivilegesUserRole', '2858', '2023-04-22 01:27:41', '{\n    \"idSystemPrivileges\": 1,\n    \"objectSource\": \"1\",\n    \"objectTupla\": 40,\n    \"active\": 1,\n    \"objetcAccess\": 1\n}', 1, 2, NULL, NULL, NULL),
+(13099, 'systemMenu', '40', '2023-04-22 01:27:41', '{\n    \"name\": \"Orientacion Documento\",\n    \"description\": null,\n    \"href\": \"systemOrientation\",\n    \"idSystemIcon\": 54,\n    \"category\": 39,\n    \"priority\": 20,\n    \"idSystemTypeElement\": 2,\n    \"roles\": [\n        1\n    ]\n}', 1, 2, NULL, NULL, NULL),
+(13100, 'systemOrientation', '1', '2023-07-06 02:00:42', '{\n    \"name\": \"VERTICAL\"\n}', 1, 2, NULL, NULL, NULL),
+(13101, 'systemOrientation', '2', '2023-07-06 02:00:54', '{\n    \"name\": \"HORIZONTA\"\n}', 1, 2, NULL, NULL, NULL),
+(13102, 'systemOrientation', '2', '2023-07-06 02:00:58', '{\n    \"name\": \"HORIZONTA\"\n}', 1, 4, NULL, NULL, NULL),
+(13103, 'systemOrientation', '2', '2023-07-06 02:01:03', '{\n    \"name\": \"HORIZONTAL\"\n}', 1, 5, NULL, NULL, NULL),
+(13104, 'systemMenu', '39', '2023-07-06 02:05:27', '{\n    \"name\": \"Catalogo de Documento\",\n    \"description\": null,\n    \"href\": null,\n    \"idSystemIcon\": 203,\n    \"category\": 39,\n    \"priority\": 40,\n    \"idSystemTypeElement\": 1\n}', 1, 4, NULL, NULL, NULL),
+(13105, 'systemPrivilegesUserRole', '3039', '2023-07-06 02:05:49', '{\n    \"idSystemPrivileges\": 1,\n    \"objectSource\": \"1\",\n    \"objectTupla\": 39,\n    \"active\": 1,\n    \"objetcAccess\": 1\n}', 1, 2, NULL, NULL, NULL),
+(13106, 'systemMenu', '39', '2023-07-06 02:05:49', '{\n    \"name\": \"Catalogo de Documento\",\n    \"description\": null,\n    \"href\": null,\n    \"idSystemIcon\": 203,\n    \"category\": 5,\n    \"priority\": 40,\n    \"idSystemTypeElement\": 1\n}', 1, 5, NULL, NULL, NULL),
+(13107, 'systemPrivilegesUserRole', '3040', '2023-07-06 02:08:38', '{\n    \"idSystemPrivileges\": 1,\n    \"objectSource\": \"1\",\n    \"objectTupla\": 41,\n    \"active\": 1,\n    \"objetcAccess\": 1\n}', 1, 2, NULL, NULL, NULL),
+(13108, 'systemMenu', '41', '2023-07-06 02:08:38', '{\n    \"name\": \"Size Documento\",\n    \"description\": \"Tama\\u00f1o de hoja del documento\",\n    \"href\": \"systemSize\",\n    \"idSystemIcon\": 185,\n    \"category\": 39,\n    \"priority\": 20,\n    \"idSystemTypeElement\": 2,\n    \"roles\": [\n        1\n    ]\n}', 1, 2, NULL, NULL, NULL),
+(13109, 'systemSize', '1', '2023-07-06 03:21:06', '{\n    \"name\": \"CARTA\",\n    \"type\": \"letter\"\n}', 1, 2, NULL, NULL, NULL),
+(13110, 'systemOrientation', '1', '2023-07-06 03:48:31', '{\n    \"name\": \"VERTICAL\"\n}', 1, 4, NULL, NULL, NULL),
+(13111, 'systemOrientation', '1', '2023-07-06 03:48:41', '{\n    \"name\": \"VERTICAL\",\n    \"type\": \"Portrait\"\n}', 1, 5, NULL, NULL, NULL),
+(13112, 'systemOrientation', '1', '2023-07-06 03:48:58', '{\n    \"name\": \"VERTICAL\"\n}', 1, 4, NULL, NULL, NULL),
+(13113, 'systemOrientation', '1', '2023-07-06 03:49:05', '{\n    \"name\": \"VERTICAL\",\n    \"type\": \"Portrait\"\n}', 1, 5, NULL, NULL, NULL),
+(13114, 'systemOrientation', '1', '2023-07-06 03:52:35', '{\n    \"name\": \"VERTICAL\"\n}', 1, 4, NULL, NULL, NULL),
+(13115, 'systemOrientation', '1', '2023-07-06 03:52:40', '{\n    \"name\": \"VERTICAL\",\n    \"type\": \"Portrait\"\n}', 1, 5, NULL, NULL, NULL),
+(13116, 'systemOrientation', '2', '2023-07-06 19:39:49', '{\n    \"name\": \"HORIZONTAL\"\n}', 1, 4, NULL, NULL, NULL),
+(13117, 'systemOrientation', '2', '2023-07-06 19:39:56', '{\n    \"name\": \"HORIZONTAL\",\n    \"type\": \"Landscape\"\n}', 1, 5, NULL, NULL, NULL),
+(13118, 'systemSize', '1', '2023-07-06 19:40:18', '{\n    \"name\": \"CARTA\"\n}', 1, 4, NULL, NULL, NULL),
+(13119, 'systemSize', '1', '2023-07-06 19:40:23', '{\n    \"name\": \"CARTA\",\n    \"type\": \"Letter\"\n}', 1, 5, NULL, NULL, NULL),
+(13120, 'systemSize', '2', '2023-07-06 19:40:33', '{\n    \"name\": \"OFICIO\",\n    \"type\": \"Legal\"\n}', 1, 2, NULL, NULL, NULL),
+(13121, 'systemSize', '3', '2023-07-06 19:40:47', '{\n    \"name\": \"DOBLE CARTA\",\n    \"type\": \"Tabloid\"\n}', 1, 2, NULL, NULL, NULL),
+(13122, 'systemSize', '4', '2023-07-06 19:41:02', '{\n    \"name\": \"Comm10E\",\n    \"type\": \"Comm10E\"\n}', 1, 2, NULL, NULL, NULL),
+(13123, 'systemSize', '5', '2023-07-06 19:41:09', '{\n    \"name\": \"DLE\",\n    \"type\": \"DLE\"\n}', 1, 2, NULL, NULL, NULL),
+(13124, 'systemSize', '6', '2023-07-06 19:41:23', '{\n    \"name\": \"Executive\",\n    \"type\": \"Executive\"\n}', 1, 2, NULL, NULL, NULL),
+(13125, 'systemSize', '7', '2023-07-06 19:41:34', '{\n    \"name\": \"FOLIO\",\n    \"type\": \"Folio\"\n}', 1, 2, NULL, NULL, NULL),
+(13126, 'systemSize', '8', '2023-07-06 19:41:45', '{\n    \"name\": \"LEDGER\",\n    \"type\": \"Ledger\"\n}', 1, 2, NULL, NULL, NULL),
+(13127, 'systemSize', '9', '2023-07-06 19:41:52', '{\n    \"name\": \"A0\",\n    \"type\": \"A0\"\n}', 1, 2, NULL, NULL, NULL),
+(13128, 'systemSize', '10', '2023-07-06 19:41:59', '{\n    \"name\": \"A1\",\n    \"type\": \"A1\"\n}', 1, 2, NULL, NULL, NULL),
+(13129, 'systemSize', '11', '2023-07-06 19:42:09', '{\n    \"name\": \"A2\",\n    \"type\": \"A2\"\n}', 1, 2, NULL, NULL, NULL),
+(13130, 'systemSize', '12', '2023-07-06 19:42:17', '{\n    \"name\": \"A3\",\n    \"type\": \"A3\"\n}', 1, 2, NULL, NULL, NULL),
+(13131, 'systemSize', '13', '2023-07-06 19:42:27', '{\n    \"name\": \"A4\",\n    \"type\": \"A4\"\n}', 1, 2, NULL, NULL, NULL),
+(13132, 'systemSize', '14', '2023-07-06 19:42:34', '{\n    \"name\": \"A5\",\n    \"type\": \"A5\"\n}', 1, 2, NULL, NULL, NULL),
+(13133, 'systemSize', '15', '2023-07-06 19:42:49', '{\n    \"name\": \"A6\",\n    \"type\": \"A6\"\n}', 1, 2, NULL, NULL, NULL),
+(13134, 'systemSize', '16', '2023-07-06 19:42:59', '{\n    \"name\": \"A7\",\n    \"type\": \"A7\"\n}', 1, 2, NULL, NULL, NULL),
+(13135, 'systemSize', '17', '2023-07-06 19:43:06', '{\n    \"name\": \"A8\",\n    \"type\": \"A8\"\n}', 1, 2, NULL, NULL, NULL),
+(13136, 'systemSize', '18', '2023-07-06 19:43:15', '{\n    \"name\": \"A9\",\n    \"type\": \"A9\"\n}', 1, 2, NULL, NULL, NULL),
+(13137, 'systemSize', '19', '2023-07-06 19:43:24', '{\n    \"name\": \"B0\",\n    \"type\": \"B0\"\n}', 1, 2, NULL, NULL, NULL),
+(13138, 'systemSize', '20', '2023-07-06 19:43:31', '{\n    \"name\": \"B1\",\n    \"type\": \"B1\"\n}', 1, 2, NULL, NULL, NULL),
+(13139, 'systemSize', '21', '2023-07-06 19:43:39', '{\n    \"name\": \"B2\",\n    \"type\": \"B2\"\n}', 1, 2, NULL, NULL, NULL),
+(13140, 'systemSize', '22', '2023-07-06 19:43:50', '{\n    \"name\": \"B3\",\n    \"type\": \"B3\"\n}', 1, 2, NULL, NULL, NULL),
+(13141, 'systemSize', '23', '2023-07-06 19:43:58', '{\n    \"name\": \"B4\",\n    \"type\": \"B4\"\n}', 1, 2, NULL, NULL, NULL),
+(13142, 'systemSize', '24', '2023-07-06 19:44:05', '{\n    \"name\": \"B5\",\n    \"type\": \"B5\"\n}', 1, 2, NULL, NULL, NULL),
+(13143, 'systemSize', '25', '2023-07-06 19:44:13', '{\n    \"name\": \"B6\",\n    \"type\": \"B6\"\n}', 1, 2, NULL, NULL, NULL),
+(13144, 'systemSize', '26', '2023-07-06 19:44:20', '{\n    \"name\": \"B7\",\n    \"type\": \"B7\"\n}', 1, 2, NULL, NULL, NULL),
+(13145, 'systemSize', '27', '2023-07-06 19:44:28', '{\n    \"name\": \"B8\",\n    \"type\": \"B8\"\n}', 1, 2, NULL, NULL, NULL),
+(13146, 'systemSize', '28', '2023-07-06 19:44:35', '{\n    \"name\": \"B9\",\n    \"type\": \"B9\"\n}', 1, 2, NULL, NULL, NULL),
+(13147, 'systemSize', '29', '2023-07-06 19:44:52', '{\n    \"name\": \"C5E\",\n    \"type\": \"C5E\"\n}', 1, 2, NULL, NULL, NULL),
+(13148, 'systemTemplate', '1', '2023-07-06 20:20:17', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 2, NULL, NULL, NULL),
+(13149, 'systemTemplate', '1', '2023-07-06 20:27:14', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13150, 'systemTemplate', '1', '2023-07-06 20:29:46', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL),
+(13151, 'systemTemplate', '1', '2023-07-06 20:29:53', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13152, 'systemTemplate', '1', '2023-07-06 20:31:37', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL),
+(13153, 'systemTemplate', '1', '2023-07-06 20:34:44', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13154, 'systemTemplate', '1', '2023-07-06 20:34:53', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL),
+(13155, 'systemTemplate', '1', '2023-07-06 20:43:18', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13156, 'systemTemplate', '1', '2023-07-06 20:43:25', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL),
+(13157, 'systemTemplate', '1', '2023-07-06 20:54:32', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13158, 'systemTemplate', '1', '2023-07-06 20:54:48', '{\n    \"name\": \"PRUEBA\",\n    \"json\": null,\n    \"header\": null,\n    \"body\": null,\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": null,\n    \"footerSpacing\": null,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL),
+(13159, 'systemTemplate', '1', '2023-07-08 01:51:00', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 2, NULL, NULL, NULL),
+(13160, 'systemDocument', '1', '2023-07-08 01:54:09', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\'data\': \'datos\'}\",\n    \"dateCreate\": null\n}', 1, 2, NULL, NULL, NULL),
+(13161, 'systemDocument', '1', '2023-07-08 02:09:52', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\'data\': \'datos\'}\",\n    \"dateCreate\": null\n}', 1, 4, NULL, NULL, NULL),
+(13162, 'systemDocument', '1', '2023-07-08 02:11:25', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\'data\': \'datos\'}\",\n    \"dateCreate\": null\n}', 1, 4, NULL, NULL, NULL),
+(13163, 'systemDocument', '1', '2023-07-08 02:12:09', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\'data\': \'datos\'}\",\n    \"dateCreate\": null\n}', 1, 4, NULL, NULL, NULL),
+(13164, 'systemDocument', '1', '2023-07-08 02:13:30', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\'data\': \'datos\'}\",\n    \"dateCreate\": null\n}', 1, 4, NULL, NULL, NULL),
+(13165, 'systemDocument', '1', '2023-07-08 02:17:01', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\'data\': \'datos\'}\",\n    \"dateCreate\": null\n}', 1, 4, NULL, NULL, NULL),
+(13166, 'systemDocument', '1', '2023-07-08 21:50:45', 'Creacion de PDF', 1, 21, NULL, NULL, NULL),
+(13167, 'systemDocument', '1', '2023-07-08 21:50:55', 'Creacion de PDF', 1, 21, NULL, NULL, NULL),
+(13168, 'systemDocument', '1', '2023-07-08 22:00:20', 'Creacion de PDF', 1, 21, NULL, NULL, NULL),
+(13169, 'systemTemplate', '1', '2023-07-08 22:28:17', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13170, 'systemTemplate', '1', '2023-07-08 22:28:41', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\', \'tags\': \'<!--##CONTENIDO##-->\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL),
+(13171, 'systemTemplate', '1', '2023-07-08 22:28:47', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\', \'tags\': \'<!--##CONTENIDO##-->\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13172, 'systemTemplate', '1', '2023-07-08 22:29:11', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\', \'tags\': \'<!--##CONTENIDO##-->\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13173, 'systemTemplate', '1', '2023-07-08 22:29:20', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\', \'tags\': \'<!--##CONTENIDO##-->\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\\n<!--##CONTENIDO##-->\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL),
+(13174, 'systemDocument', '1', '2023-07-08 22:29:33', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\'data\': \'datos\'}\",\n    \"dateCreate\": null\n}', 1, 4, NULL, NULL, NULL),
+(13175, 'systemDocument', '1', '2023-07-08 22:31:13', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\'value\': \'datos\'}\",\n    \"dateCreate\": null\n}', 1, 5, NULL, NULL, NULL),
+(13176, 'systemDocument', '1', '2023-07-09 00:34:54', 'Creacion de PDF', 1, 21, NULL, NULL, NULL),
+(13177, 'systemTemplate', '1', '2023-07-09 00:35:48', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\', \'tags\': \'<!--##CONTENIDO##-->\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\\n<!--##CONTENIDO##-->\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13178, 'systemTemplate', '1', '2023-07-09 00:36:00', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\', \'tags\': \'<!--##CONTENIDO##-->\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\\n<!--##CONTENIDO##-->\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"marginLeft\": 11,\n    \"marginRight\": 11,\n    \"marginTop\": 11,\n    \"marginBottom\": 11,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL),
+(13179, 'systemDocument', '1', '2023-07-09 00:36:13', 'Creacion de PDF', 1, 21, NULL, NULL, NULL),
+(13180, 'systemDocument', '1', '2023-07-09 00:36:16', 'Creacion de PDF', 1, 21, NULL, NULL, NULL),
+(13181, 'systemTemplate', '1', '2023-07-09 00:36:47', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\', \'tags\': \'<!--##CONTENIDO##-->\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\\n<!--##CONTENIDO##-->\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL);
+INSERT INTO `systemLog` (`id`, `entity`, `tuple`, `date`, `data`, `idSystemUser`, `idSystemAction`, `ipAddress`, `agent`, `form`) VALUES
+(13182, 'systemTemplate', '1', '2023-07-09 00:36:55', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\', \'tags\': \'<!--##CONTENIDO##-->\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\\n<!--##CONTENIDO##-->\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL),
+(13183, 'systemTemplate', '1', '2023-07-11 19:39:49', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\'data\': \'datos\', \'tags\': \'<!--##CONTENIDO##-->\'}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\\n<!--##CONTENIDO##-->\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13184, 'systemTemplate', '1', '2023-07-11 19:39:57', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\\n  \\\"Checkbox\\\": {\\n    \\\"dynamic\\\": \\\"El campo dynamic si es true es dinamico y si es false es estatico\\\",\\n    \\\"class\\\": \\\"form-check\\\",\\n    \\\"checked\\\": \\\"\\\",\\n    \\\"id\\\": \\\"Checkbox\\\",\\n    \\\"label\\\": \\\"Checkbox\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Checkbox\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"checkbox\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Color\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control form-control-color\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Color\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Color\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"color\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Date\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\" form-control focused e_fecha e_requerido e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Date\\\",\\n    \\\"maximo\\\": \\\"2999-12-31\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 y 2999-12-31\\\",\\n    \\\"minimo\\\": \\\"1900-01-01\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Date\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"date\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Datetime\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Datetime\\\",\\n    \\\"maximo\\\": \\\"2999-12-31T00:00\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 00:00 y 2999-12-31 00:00\\\",\\n    \\\"minimo\\\": \\\"1900-01-01T00:00\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Datetime\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Datetime##-->\\\",\\n    \\\"type\\\": \\\"datetime\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Datetime-local\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Datetime-local\\\",\\n    \\\"maximo\\\": \\\"2999-12-31T00:00\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 00:00 y 2999-12-31 00:00\\\",\\n    \\\"minimo\\\": \\\"1900-01-01T00:00\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Datetime-local\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Datetime-local##-->\\\",\\n    \\\"type\\\": \\\"datetime-local\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Email\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Email\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"multiple\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Email\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Email##-->\\\",\\n    \\\"type\\\": \\\"email\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"File\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"accept\\\": \\\"audio\\/*, video\\/*, image\\/*\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"File\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"multiple\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##File##-->\\\",\\n    \\\"type\\\": \\\"file\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Month\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Month\\\",\\n    \\\"maximo\\\": \\\"2999-12\\\",\\n    \\\"mensaje\\\": \\\"Seleccione un mes entre 1900-01 y 2999-12\\\",\\n    \\\"minimo\\\": \\\"1900-01\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{4}-[0-9]{2}\\\",\\n    \\\"placeholder\\\": \\\"Month\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Month##-->\\\",\\n    \\\"type\\\": \\\"month\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Number\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control e_numero\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"function\\\": \\\"Este campo establece si el numero sera sumado, divido, restado, multiplicado, etc (add, split, subtract, multiply)\\\",\\n    \\\"label\\\": \\\"Number\\\",\\n    \\\"maximo\\\": \\\"1000000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1.00 y 1000000.00\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]\\\",\\n    \\\"placeholder\\\": \\\"Number\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"0.01\\\",\\n    \\\"tag\\\": \\\"<!--##Number##-->\\\",\\n    \\\"type\\\": \\\"number\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"NumberDecimal\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control e_numero\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"NumberDecimal\\\",\\n    \\\"maximo\\\": \\\"1000000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1.00 y 1000000.00\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]+([.,][0-9]+)?\\\",\\n    \\\"placeholder\\\": \\\"NumberDecimal\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"0.01\\\",\\n    \\\"tag\\\": \\\"<!--##NumberDecimal##-->\\\",\\n    \\\"type\\\": \\\"number\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Password\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"inputmode\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Password\\\",\\n    \\\"maximo\\\": \\\"100\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 100 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Password\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Password##-->\\\",\\n    \\\"type\\\": \\\"password\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Radio\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"checked\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-check-input\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Radio\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Radio\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Radio##-->\\\",\\n    \\\"type\\\": \\\"radio\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Range\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Range\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Range\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"1\\\",\\n    \\\"tag\\\": \\\"<!--##Range##-->\\\",\\n    \\\"type\\\": \\\"range\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Select\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused is-valid custom-select\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"item\\\": [\\n      {\\n        \\\"value\\\": \\\"gg\\\",\\n        \\\"name\\\": \\\"gg\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      },\\n      {\\n        \\\"value\\\": \\\"gg\\\",\\n        \\\"name\\\": \\\"gg\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      }\\n    ],\\n    \\\"label\\\": \\\"Select\\\",\\n    \\\"maximo\\\": \\\"\\\",\\n    \\\"mensaje\\\": \\\"Selecciona una opcion\\\",\\n    \\\"minimo\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Select\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Select##-->\\\",\\n    \\\"type\\\": \\\"select\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"SelectBD\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused is-valid custom-select\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"item\\\": [\\n      {\\n        \\\"value\\\": \\\"consulta a la bd\\\",\\n        \\\"name\\\": \\\"bd\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      }\\n    ],\\n    \\\"label\\\": \\\"SelectBD\\\",\\n    \\\"maximo\\\": \\\"\\\",\\n    \\\"mensaje\\\": \\\"Selecciona una opcion\\\",\\n    \\\"minimo\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"SelectBD\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##SelectBD##-->\\\",\\n    \\\"type\\\": \\\"select\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Tel\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Tel\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{3}-[0-9]{3}-[0-9]{4}\\\",\\n    \\\"placeholder\\\": \\\"Tel\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Tel##-->\\\",\\n    \\\"type\\\": \\\"text\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Text\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Text\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Text\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Text##-->\\\",\\n    \\\"type\\\": \\\"text\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"TextArea\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"TextArea\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"TextArea\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##TextArea##-->\\\",\\n    \\\"type\\\": \\\"textarea\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Time\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Time\\\",\\n    \\\"maximo\\\": \\\"00:01\\\",\\n    \\\"mensaje\\\": \\\"Introduce una hora entre 00:00 y 23:59\\\",\\n    \\\"minimo\\\": \\\"23:59\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{2}:[0-9]{2}\\\",\\n    \\\"placeholder\\\": \\\"Time\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Time##-->\\\",\\n    \\\"type\\\": \\\"time\\\",\\n    \\\"step\\\": \\\"\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Url\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Url\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"https:\\/\\/.*\\\",\\n    \\\"placeholder\\\": \\\"Url\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Url##-->\\\",\\n    \\\"type\\\": \\\"url\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Week\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Week\\\",\\n    \\\"maximo\\\": \\\"2999-W45\\\",\\n    \\\"mensaje\\\": \\\"Introduce una semana entre 1900-W45 y 2999-W45\\\",\\n    \\\"minimo\\\": \\\"1900-W45\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Week\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Week##-->\\\",\\n    \\\"type\\\": \\\"week\\\",\\n    \\\"value\\\": \\\"\\\"\\n  }\\n}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\\n<!--##CONTENIDO##-->\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL),
+(13185, 'systemTemplate', '1', '2023-07-11 19:40:21', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\\n  \\\"Checkbox\\\": {\\n    \\\"dynamic\\\": \\\"El campo dynamic si es true es dinamico y si es false es estatico\\\",\\n    \\\"class\\\": \\\"form-check\\\",\\n    \\\"checked\\\": \\\"\\\",\\n    \\\"id\\\": \\\"Checkbox\\\",\\n    \\\"label\\\": \\\"Checkbox\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Checkbox\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"checkbox\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Color\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control form-control-color\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Color\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Color\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"color\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Date\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\" form-control focused e_fecha e_requerido e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Date\\\",\\n    \\\"maximo\\\": \\\"2999-12-31\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 y 2999-12-31\\\",\\n    \\\"minimo\\\": \\\"1900-01-01\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Date\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"date\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Datetime\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Datetime\\\",\\n    \\\"maximo\\\": \\\"2999-12-31T00:00\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 00:00 y 2999-12-31 00:00\\\",\\n    \\\"minimo\\\": \\\"1900-01-01T00:00\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Datetime\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Datetime##-->\\\",\\n    \\\"type\\\": \\\"datetime\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Datetime-local\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Datetime-local\\\",\\n    \\\"maximo\\\": \\\"2999-12-31T00:00\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 00:00 y 2999-12-31 00:00\\\",\\n    \\\"minimo\\\": \\\"1900-01-01T00:00\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Datetime-local\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Datetime-local##-->\\\",\\n    \\\"type\\\": \\\"datetime-local\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Email\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Email\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"multiple\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Email\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Email##-->\\\",\\n    \\\"type\\\": \\\"email\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"File\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"accept\\\": \\\"audio\\/*, video\\/*, image\\/*\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"File\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"multiple\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##File##-->\\\",\\n    \\\"type\\\": \\\"file\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Month\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Month\\\",\\n    \\\"maximo\\\": \\\"2999-12\\\",\\n    \\\"mensaje\\\": \\\"Seleccione un mes entre 1900-01 y 2999-12\\\",\\n    \\\"minimo\\\": \\\"1900-01\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{4}-[0-9]{2}\\\",\\n    \\\"placeholder\\\": \\\"Month\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Month##-->\\\",\\n    \\\"type\\\": \\\"month\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Number\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control e_numero\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"function\\\": \\\"Este campo establece si el numero sera sumado, divido, restado, multiplicado, etc (add, split, subtract, multiply)\\\",\\n    \\\"label\\\": \\\"Number\\\",\\n    \\\"maximo\\\": \\\"1000000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1.00 y 1000000.00\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]\\\",\\n    \\\"placeholder\\\": \\\"Number\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"0.01\\\",\\n    \\\"tag\\\": \\\"<!--##Number##-->\\\",\\n    \\\"type\\\": \\\"number\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"NumberDecimal\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control e_numero\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"NumberDecimal\\\",\\n    \\\"maximo\\\": \\\"1000000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1.00 y 1000000.00\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]+([.,][0-9]+)?\\\",\\n    \\\"placeholder\\\": \\\"NumberDecimal\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"0.01\\\",\\n    \\\"tag\\\": \\\"<!--##NumberDecimal##-->\\\",\\n    \\\"type\\\": \\\"number\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Password\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"inputmode\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Password\\\",\\n    \\\"maximo\\\": \\\"100\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 100 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Password\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Password##-->\\\",\\n    \\\"type\\\": \\\"password\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Radio\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"checked\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-check-input\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Radio\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Radio\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Radio##-->\\\",\\n    \\\"type\\\": \\\"radio\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Range\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Range\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Range\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"1\\\",\\n    \\\"tag\\\": \\\"<!--##Range##-->\\\",\\n    \\\"type\\\": \\\"range\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Select\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused is-valid custom-select\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"item\\\": [\\n      {\\n        \\\"value\\\": \\\"gg\\\",\\n        \\\"name\\\": \\\"gg\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      },\\n      {\\n        \\\"value\\\": \\\"gg\\\",\\n        \\\"name\\\": \\\"gg\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      }\\n    ],\\n    \\\"label\\\": \\\"Select\\\",\\n    \\\"maximo\\\": \\\"\\\",\\n    \\\"mensaje\\\": \\\"Selecciona una opcion\\\",\\n    \\\"minimo\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Select\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Select##-->\\\",\\n    \\\"type\\\": \\\"select\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"SelectBD\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused is-valid custom-select\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"item\\\": [\\n      {\\n        \\\"value\\\": \\\"consulta a la bd\\\",\\n        \\\"name\\\": \\\"bd\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      }\\n    ],\\n    \\\"label\\\": \\\"SelectBD\\\",\\n    \\\"maximo\\\": \\\"\\\",\\n    \\\"mensaje\\\": \\\"Selecciona una opcion\\\",\\n    \\\"minimo\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"SelectBD\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##SelectBD##-->\\\",\\n    \\\"type\\\": \\\"select\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Tel\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Tel\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{3}-[0-9]{3}-[0-9]{4}\\\",\\n    \\\"placeholder\\\": \\\"Tel\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Tel##-->\\\",\\n    \\\"type\\\": \\\"text\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Text\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Text\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Text\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Text##-->\\\",\\n    \\\"type\\\": \\\"text\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"TextArea\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"TextArea\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"TextArea\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##TextArea##-->\\\",\\n    \\\"type\\\": \\\"textarea\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Time\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Time\\\",\\n    \\\"maximo\\\": \\\"00:01\\\",\\n    \\\"mensaje\\\": \\\"Introduce una hora entre 00:00 y 23:59\\\",\\n    \\\"minimo\\\": \\\"23:59\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{2}:[0-9]{2}\\\",\\n    \\\"placeholder\\\": \\\"Time\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Time##-->\\\",\\n    \\\"type\\\": \\\"time\\\",\\n    \\\"step\\\": \\\"\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Url\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Url\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"https:\\/\\/.*\\\",\\n    \\\"placeholder\\\": \\\"Url\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Url##-->\\\",\\n    \\\"type\\\": \\\"url\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Week\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Week\\\",\\n    \\\"maximo\\\": \\\"2999-W45\\\",\\n    \\\"mensaje\\\": \\\"Introduce una semana entre 1900-W45 y 2999-W45\\\",\\n    \\\"minimo\\\": \\\"1900-W45\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Week\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Week##-->\\\",\\n    \\\"type\\\": \\\"week\\\",\\n    \\\"value\\\": \\\"\\\"\\n  }\\n}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\\n<!--##CONTENIDO##-->\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL),
+(13186, 'systemDocument', '1', '2023-07-11 19:40:40', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\'value\': \'datos\'}\",\n    \"dateCreate\": null\n}', 1, 4, NULL, NULL, NULL),
+(13187, 'systemDocument', '1', '2023-07-11 19:41:12', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\\n\\\"Checkbox\\\": {\\n    \\\"dynamic\\\": \\\"El campo dynamic si es true es dinamico y si es false es estatico\\\",\\n    \\\"class\\\": \\\"form-check\\\",\\n    \\\"checked\\\": \\\"\\\",\\n    \\\"id\\\": \\\"Checkbox\\\",\\n    \\\"label\\\": \\\"Checkbox\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Checkbox\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##DATA##-->\\\",\\n    \\\"type\\\": \\\"checkbox\\\",\\n    \\\"value\\\": \\\"datos de prueba para el documento\\\"\\n  }\\n}\",\n    \"dateCreate\": null\n}', 1, 5, NULL, NULL, NULL),
+(13188, 'systemDocument', '1', '2023-07-11 19:41:25', '{\n    \"idSystemTemplate\": 1,\n    \"content\": \"{\\n\\\"Checkbox\\\": {\\n    \\\"dynamic\\\": \\\"El campo dynamic si es true es dinamico y si es false es estatico\\\",\\n    \\\"class\\\": \\\"form-check\\\",\\n    \\\"checked\\\": \\\"\\\",\\n    \\\"id\\\": \\\"Checkbox\\\",\\n    \\\"label\\\": \\\"Checkbox\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Checkbox\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##DATA##-->\\\",\\n    \\\"type\\\": \\\"checkbox\\\",\\n    \\\"value\\\": \\\"datos de prueba para el documento\\\"\\n  }\\n}\",\n    \"dateCreate\": null\n}', 1, 4, NULL, NULL, NULL),
+(13189, 'systemTemplate', '1', '2023-07-11 19:41:36', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\\n  \\\"Checkbox\\\": {\\n    \\\"dynamic\\\": \\\"El campo dynamic si es true es dinamico y si es false es estatico\\\",\\n    \\\"class\\\": \\\"form-check\\\",\\n    \\\"checked\\\": \\\"\\\",\\n    \\\"id\\\": \\\"Checkbox\\\",\\n    \\\"label\\\": \\\"Checkbox\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Checkbox\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"checkbox\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Color\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control form-control-color\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Color\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Color\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"color\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Date\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\" form-control focused e_fecha e_requerido e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Date\\\",\\n    \\\"maximo\\\": \\\"2999-12-31\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 y 2999-12-31\\\",\\n    \\\"minimo\\\": \\\"1900-01-01\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Date\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"date\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Datetime\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Datetime\\\",\\n    \\\"maximo\\\": \\\"2999-12-31T00:00\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 00:00 y 2999-12-31 00:00\\\",\\n    \\\"minimo\\\": \\\"1900-01-01T00:00\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Datetime\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Datetime##-->\\\",\\n    \\\"type\\\": \\\"datetime\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Datetime-local\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Datetime-local\\\",\\n    \\\"maximo\\\": \\\"2999-12-31T00:00\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 00:00 y 2999-12-31 00:00\\\",\\n    \\\"minimo\\\": \\\"1900-01-01T00:00\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Datetime-local\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Datetime-local##-->\\\",\\n    \\\"type\\\": \\\"datetime-local\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Email\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Email\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"multiple\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Email\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Email##-->\\\",\\n    \\\"type\\\": \\\"email\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"File\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"accept\\\": \\\"audio\\/*, video\\/*, image\\/*\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"File\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"multiple\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##File##-->\\\",\\n    \\\"type\\\": \\\"file\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Month\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Month\\\",\\n    \\\"maximo\\\": \\\"2999-12\\\",\\n    \\\"mensaje\\\": \\\"Seleccione un mes entre 1900-01 y 2999-12\\\",\\n    \\\"minimo\\\": \\\"1900-01\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{4}-[0-9]{2}\\\",\\n    \\\"placeholder\\\": \\\"Month\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Month##-->\\\",\\n    \\\"type\\\": \\\"month\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Number\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control e_numero\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"function\\\": \\\"Este campo establece si el numero sera sumado, divido, restado, multiplicado, etc (add, split, subtract, multiply)\\\",\\n    \\\"label\\\": \\\"Number\\\",\\n    \\\"maximo\\\": \\\"1000000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1.00 y 1000000.00\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]\\\",\\n    \\\"placeholder\\\": \\\"Number\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"0.01\\\",\\n    \\\"tag\\\": \\\"<!--##Number##-->\\\",\\n    \\\"type\\\": \\\"number\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"NumberDecimal\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control e_numero\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"NumberDecimal\\\",\\n    \\\"maximo\\\": \\\"1000000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1.00 y 1000000.00\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]+([.,][0-9]+)?\\\",\\n    \\\"placeholder\\\": \\\"NumberDecimal\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"0.01\\\",\\n    \\\"tag\\\": \\\"<!--##NumberDecimal##-->\\\",\\n    \\\"type\\\": \\\"number\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Password\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"inputmode\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Password\\\",\\n    \\\"maximo\\\": \\\"100\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 100 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Password\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Password##-->\\\",\\n    \\\"type\\\": \\\"password\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Radio\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"checked\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-check-input\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Radio\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Radio\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Radio##-->\\\",\\n    \\\"type\\\": \\\"radio\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Range\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Range\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Range\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"1\\\",\\n    \\\"tag\\\": \\\"<!--##Range##-->\\\",\\n    \\\"type\\\": \\\"range\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Select\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused is-valid custom-select\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"item\\\": [\\n      {\\n        \\\"value\\\": \\\"gg\\\",\\n        \\\"name\\\": \\\"gg\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      },\\n      {\\n        \\\"value\\\": \\\"gg\\\",\\n        \\\"name\\\": \\\"gg\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      }\\n    ],\\n    \\\"label\\\": \\\"Select\\\",\\n    \\\"maximo\\\": \\\"\\\",\\n    \\\"mensaje\\\": \\\"Selecciona una opcion\\\",\\n    \\\"minimo\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Select\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Select##-->\\\",\\n    \\\"type\\\": \\\"select\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"SelectBD\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused is-valid custom-select\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"item\\\": [\\n      {\\n        \\\"value\\\": \\\"consulta a la bd\\\",\\n        \\\"name\\\": \\\"bd\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      }\\n    ],\\n    \\\"label\\\": \\\"SelectBD\\\",\\n    \\\"maximo\\\": \\\"\\\",\\n    \\\"mensaje\\\": \\\"Selecciona una opcion\\\",\\n    \\\"minimo\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"SelectBD\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##SelectBD##-->\\\",\\n    \\\"type\\\": \\\"select\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Tel\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Tel\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{3}-[0-9]{3}-[0-9]{4}\\\",\\n    \\\"placeholder\\\": \\\"Tel\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Tel##-->\\\",\\n    \\\"type\\\": \\\"text\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Text\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Text\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Text\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Text##-->\\\",\\n    \\\"type\\\": \\\"text\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"TextArea\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"TextArea\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"TextArea\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##TextArea##-->\\\",\\n    \\\"type\\\": \\\"textarea\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Time\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Time\\\",\\n    \\\"maximo\\\": \\\"00:01\\\",\\n    \\\"mensaje\\\": \\\"Introduce una hora entre 00:00 y 23:59\\\",\\n    \\\"minimo\\\": \\\"23:59\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{2}:[0-9]{2}\\\",\\n    \\\"placeholder\\\": \\\"Time\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Time##-->\\\",\\n    \\\"type\\\": \\\"time\\\",\\n    \\\"step\\\": \\\"\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Url\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Url\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"https:\\/\\/.*\\\",\\n    \\\"placeholder\\\": \\\"Url\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Url##-->\\\",\\n    \\\"type\\\": \\\"url\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Week\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Week\\\",\\n    \\\"maximo\\\": \\\"2999-W45\\\",\\n    \\\"mensaje\\\": \\\"Introduce una semana entre 1900-W45 y 2999-W45\\\",\\n    \\\"minimo\\\": \\\"1900-W45\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Week\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Week##-->\\\",\\n    \\\"type\\\": \\\"week\\\",\\n    \\\"value\\\": \\\"\\\"\\n  }\\n}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\\n<!--##CONTENIDO##-->\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"script\": null\n}', 1, 4, NULL, NULL, NULL);
+INSERT INTO `systemLog` (`id`, `entity`, `tuple`, `date`, `data`, `idSystemUser`, `idSystemAction`, `ipAddress`, `agent`, `form`) VALUES
+(13190, 'systemTemplate', '1', '2023-07-11 19:41:45', '{\n    \"name\": \"Prueba\",\n    \"json\": \"{\\n  \\\"Checkbox\\\": {\\n    \\\"dynamic\\\": \\\"El campo dynamic si es true es dinamico y si es false es estatico\\\",\\n    \\\"class\\\": \\\"form-check\\\",\\n    \\\"checked\\\": \\\"\\\",\\n    \\\"id\\\": \\\"Checkbox\\\",\\n    \\\"label\\\": \\\"Checkbox\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Checkbox\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"checkbox\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Color\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control form-control-color\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Color\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Color\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"color\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Date\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\" form-control focused e_fecha e_requerido e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Date\\\",\\n    \\\"maximo\\\": \\\"2999-12-31\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 y 2999-12-31\\\",\\n    \\\"minimo\\\": \\\"1900-01-01\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Date\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--####-->\\\",\\n    \\\"type\\\": \\\"date\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Datetime\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Datetime\\\",\\n    \\\"maximo\\\": \\\"2999-12-31T00:00\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 00:00 y 2999-12-31 00:00\\\",\\n    \\\"minimo\\\": \\\"1900-01-01T00:00\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Datetime\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Datetime##-->\\\",\\n    \\\"type\\\": \\\"datetime\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Datetime-local\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Datetime-local\\\",\\n    \\\"maximo\\\": \\\"2999-12-31T00:00\\\",\\n    \\\"mensaje\\\": \\\"Seleccione una fecha entre 1900-01-01 00:00 y 2999-12-31 00:00\\\",\\n    \\\"minimo\\\": \\\"1900-01-01T00:00\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Datetime-local\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Datetime-local##-->\\\",\\n    \\\"type\\\": \\\"datetime-local\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Email\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Email\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"multiple\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Email\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Email##-->\\\",\\n    \\\"type\\\": \\\"email\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"File\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"accept\\\": \\\"audio\\/*, video\\/*, image\\/*\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"File\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"multiple\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##File##-->\\\",\\n    \\\"type\\\": \\\"file\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Month\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control \\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Month\\\",\\n    \\\"maximo\\\": \\\"2999-12\\\",\\n    \\\"mensaje\\\": \\\"Seleccione un mes entre 1900-01 y 2999-12\\\",\\n    \\\"minimo\\\": \\\"1900-01\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{4}-[0-9]{2}\\\",\\n    \\\"placeholder\\\": \\\"Month\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Month##-->\\\",\\n    \\\"type\\\": \\\"month\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Number\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control e_numero\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"function\\\": \\\"Este campo establece si el numero sera sumado, divido, restado, multiplicado, etc (add, split, subtract, multiply)\\\",\\n    \\\"label\\\": \\\"Number\\\",\\n    \\\"maximo\\\": \\\"1000000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1.00 y 1000000.00\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]\\\",\\n    \\\"placeholder\\\": \\\"Number\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"0.01\\\",\\n    \\\"tag\\\": \\\"<!--##Number##-->\\\",\\n    \\\"type\\\": \\\"number\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"NumberDecimal\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control e_numero\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"NumberDecimal\\\",\\n    \\\"maximo\\\": \\\"1000000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1.00 y 1000000.00\\\",\\n    \\\"minimo\\\": \\\"0\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]+([.,][0-9]+)?\\\",\\n    \\\"placeholder\\\": \\\"NumberDecimal\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"0.01\\\",\\n    \\\"tag\\\": \\\"<!--##NumberDecimal##-->\\\",\\n    \\\"type\\\": \\\"number\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Password\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"inputmode\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Password\\\",\\n    \\\"maximo\\\": \\\"100\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 100 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Password\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Password##-->\\\",\\n    \\\"type\\\": \\\"password\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Radio\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"checked\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-check-input\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Radio\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Radio\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Radio##-->\\\",\\n    \\\"type\\\": \\\"radio\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Range\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Range\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Range\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"step\\\": \\\"1\\\",\\n    \\\"tag\\\": \\\"<!--##Range##-->\\\",\\n    \\\"type\\\": \\\"range\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Select\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused is-valid custom-select\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"item\\\": [\\n      {\\n        \\\"value\\\": \\\"gg\\\",\\n        \\\"name\\\": \\\"gg\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      },\\n      {\\n        \\\"value\\\": \\\"gg\\\",\\n        \\\"name\\\": \\\"gg\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      }\\n    ],\\n    \\\"label\\\": \\\"Select\\\",\\n    \\\"maximo\\\": \\\"\\\",\\n    \\\"mensaje\\\": \\\"Selecciona una opcion\\\",\\n    \\\"minimo\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Select\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Select##-->\\\",\\n    \\\"type\\\": \\\"select\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"SelectBD\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused is-valid custom-select\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"item\\\": [\\n      {\\n        \\\"value\\\": \\\"consulta a la bd\\\",\\n        \\\"name\\\": \\\"bd\\\",\\n        \\\"selected\\\": \\\"\\\"\\n      }\\n    ],\\n    \\\"label\\\": \\\"SelectBD\\\",\\n    \\\"maximo\\\": \\\"\\\",\\n    \\\"mensaje\\\": \\\"Selecciona una opcion\\\",\\n    \\\"minimo\\\": \\\"\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"SelectBD\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##SelectBD##-->\\\",\\n    \\\"type\\\": \\\"select\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Tel\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Tel\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{3}-[0-9]{3}-[0-9]{4}\\\",\\n    \\\"placeholder\\\": \\\"Tel\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Tel##-->\\\",\\n    \\\"type\\\": \\\"text\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Text\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Text\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Text\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Text##-->\\\",\\n    \\\"type\\\": \\\"text\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"TextArea\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused e_longitud is-valid\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"TextArea\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"TextArea\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##TextArea##-->\\\",\\n    \\\"type\\\": \\\"textarea\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Time\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Time\\\",\\n    \\\"maximo\\\": \\\"00:01\\\",\\n    \\\"mensaje\\\": \\\"Introduce una hora entre 00:00 y 23:59\\\",\\n    \\\"minimo\\\": \\\"23:59\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"[0-9]{2}:[0-9]{2}\\\",\\n    \\\"placeholder\\\": \\\"Time\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Time##-->\\\",\\n    \\\"type\\\": \\\"time\\\",\\n    \\\"step\\\": \\\"\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Url\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Url\\\",\\n    \\\"maximo\\\": \\\"1000\\\",\\n    \\\"mensaje\\\": \\\"Introduce un valor entre 1 y 1000 caracteres de longitud\\\",\\n    \\\"minimo\\\": \\\"1\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"https:\\/\\/.*\\\",\\n    \\\"placeholder\\\": \\\"Url\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Url##-->\\\",\\n    \\\"type\\\": \\\"url\\\",\\n    \\\"value\\\": \\\"\\\"\\n  },\\n  \\\"Week\\\": {\\n    \\\"dynamic\\\": \\\"\\\",\\n    \\\"class\\\": \\\"form-control focused  e_longitud\\\",\\n    \\\"id\\\": \\\"\\\",\\n    \\\"label\\\": \\\"Week\\\",\\n    \\\"maximo\\\": \\\"2999-W45\\\",\\n    \\\"mensaje\\\": \\\"Introduce una semana entre 1900-W45 y 2999-W45\\\",\\n    \\\"minimo\\\": \\\"1900-W45\\\",\\n    \\\"name\\\": \\\"\\\",\\n    \\\"pattern\\\": \\\"\\\",\\n    \\\"placeholder\\\": \\\"Week\\\",\\n    \\\"required\\\": \\\"\\\",\\n    \\\"tag\\\": \\\"<!--##Week##-->\\\",\\n    \\\"type\\\": \\\"week\\\",\\n    \\\"value\\\": \\\"\\\"\\n  }\\n}\",\n    \"header\": null,\n    \"body\": \"<h1>datos<\\/h1>\\n<!--##DATA##-->\",\n    \"footer\": null,\n    \"orientation\": 1,\n    \"size\": 1,\n    \"headerSpacing\": 11,\n    \"footerSpacing\": 4,\n    \"frontPage\": null,\n    \"marginLeft\": 0,\n    \"marginRight\": 0,\n    \"marginTop\": 0,\n    \"marginBottom\": 0,\n    \"script\": null\n}', 1, 5, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -3702,7 +3806,30 @@ INSERT INTO `systemMenu` (`id`, `name`, `description`, `href`, `idSystemIcon`, `
 (34, 'Repositorio', NULL, 'systemRepository', 206, 5, 60, 2),
 (35, 'Documento', NULL, 'systemDocument', 524, 5, 40, 2),
 (36, 'Plantilla', NULL, 'systemTemplate', 168, 5, 50, 2),
-(37, 'Estatus Usuario', NULL, 'systemUserStatus', 666, 29, 40, 2);
+(37, 'Estatus Usuario', NULL, 'systemUserStatus', 666, 29, 40, 2),
+(39, 'Catalogo de Documento', NULL, NULL, 203, 5, 40, 1),
+(40, 'Orientacion Documento', NULL, 'systemOrientation', 54, 39, 20, 2),
+(41, 'Size Documento', 'Tamaño de hoja del documento', 'systemSize', 185, 39, 20, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `systemOrientation`
+--
+
+CREATE TABLE `systemOrientation` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(32) DEFAULT NULL,
+  `type` varchar(32) DEFAULT NULL COMMENT 'Tipo de Orientacion'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Orientacion de la hoja';
+
+--
+-- Volcado de datos para la tabla `systemOrientation`
+--
+
+INSERT INTO `systemOrientation` (`id`, `name`, `type`) VALUES
+(1, 'VERTICAL', 'Portrait'),
+(2, 'HORIZONTAL', 'Landscape');
 
 -- --------------------------------------------------------
 
@@ -4159,166 +4286,196 @@ INSERT INTO `systemPrivilegesUserRole` (`id`, `idSystemPrivileges`, `objectSourc
 (2043, 1, '1', 18, 1, 29),
 (2044, 1, '1', 18, 1, 1),
 (2694, 1, '1', 38, 1, 1),
-(2697, 1, '1', 4, 1, 1),
-(2698, 2, '1', 4, 1, 1),
-(2699, 3, '1', 4, 1, 1),
-(2700, 4, '1', 4, 1, 1),
-(2701, 5, '1', 4, 1, 1),
-(2702, 6, '1', 4, 1, 1),
-(2703, 7, '1', 4, 1, 1),
-(2704, 8, '1', 4, 1, 1),
-(2705, 9, '1', 4, 1, 1),
-(2706, 10, '1', 4, 1, 1),
-(2707, 1, '1', 5, 1, 1),
-(2708, 2, '1', 5, 1, 1),
-(2709, 3, '1', 5, 1, 1),
-(2710, 4, '1', 5, 1, 1),
-(2711, 5, '1', 5, 1, 1),
-(2712, 6, '1', 5, 1, 1),
-(2713, 7, '1', 5, 1, 1),
-(2714, 8, '1', 5, 1, 1),
-(2715, 9, '1', 5, 1, 1),
-(2716, 10, '1', 5, 1, 1),
-(2717, 1, '1', 6, 1, 1),
-(2718, 2, '1', 6, 1, 1),
-(2719, 3, '1', 6, 1, 1),
-(2720, 4, '1', 6, 1, 1),
-(2721, 5, '1', 6, 1, 1),
-(2722, 6, '1', 6, 1, 1),
-(2723, 7, '1', 6, 1, 1),
-(2724, 8, '1', 6, 1, 1),
-(2725, 9, '1', 6, 1, 1),
-(2726, 10, '1', 6, 1, 1),
-(2727, 1, '1', 7, 1, 1),
-(2728, 2, '1', 7, 1, 1),
-(2729, 3, '1', 7, 1, 1),
-(2730, 4, '1', 7, 1, 1),
-(2731, 5, '1', 7, 1, 1),
-(2732, 6, '1', 7, 1, 1),
-(2733, 7, '1', 7, 1, 1),
-(2734, 8, '1', 7, 1, 1),
-(2735, 9, '1', 7, 1, 1),
-(2736, 10, '1', 7, 1, 1),
-(2737, 1, '1', 8, 1, 1),
-(2738, 2, '1', 8, 1, 1),
-(2739, 3, '1', 8, 1, 1),
-(2740, 4, '1', 8, 1, 1),
-(2741, 5, '1', 8, 1, 1),
-(2742, 6, '1', 8, 1, 1),
-(2743, 7, '1', 8, 1, 1),
-(2744, 8, '1', 8, 1, 1),
-(2745, 9, '1', 8, 1, 1),
-(2746, 10, '1', 8, 1, 1),
-(2747, 1, '1', 27, 1, 1),
-(2748, 2, '1', 27, 1, 1),
-(2749, 3, '1', 27, 1, 1),
-(2750, 4, '1', 27, 1, 1),
-(2751, 5, '1', 27, 1, 1),
-(2752, 6, '1', 27, 1, 1),
-(2753, 7, '1', 27, 1, 1),
-(2754, 8, '1', 27, 1, 1),
-(2755, 9, '1', 27, 1, 1),
-(2756, 10, '1', 27, 1, 1),
-(2757, 1, '1', 28, 1, 1),
-(2758, 2, '1', 28, 1, 1),
-(2759, 3, '1', 28, 1, 1),
-(2760, 4, '1', 28, 1, 1),
-(2761, 5, '1', 28, 1, 1),
-(2762, 6, '1', 28, 1, 1),
-(2763, 7, '1', 28, 1, 1),
-(2764, 8, '1', 28, 1, 1),
-(2765, 9, '1', 28, 1, 1),
-(2766, 10, '1', 28, 1, 1),
-(2767, 1, '1', 29, 1, 1),
-(2768, 2, '1', 29, 1, 1),
-(2769, 3, '1', 29, 1, 1),
-(2770, 4, '1', 29, 1, 1),
-(2771, 5, '1', 29, 1, 1),
-(2772, 6, '1', 29, 1, 1),
-(2773, 7, '1', 29, 1, 1),
-(2774, 8, '1', 29, 1, 1),
-(2775, 9, '1', 29, 1, 1),
-(2776, 10, '1', 29, 1, 1),
-(2777, 1, '1', 30, 1, 1),
-(2778, 2, '1', 30, 1, 1),
-(2779, 3, '1', 30, 1, 1),
-(2780, 4, '1', 30, 1, 1),
-(2781, 5, '1', 30, 1, 1),
-(2782, 6, '1', 30, 1, 1),
-(2783, 7, '1', 30, 1, 1),
-(2784, 8, '1', 30, 1, 1),
-(2785, 9, '1', 30, 1, 1),
-(2786, 10, '1', 30, 1, 1),
-(2787, 1, '1', 31, 1, 1),
-(2788, 2, '1', 31, 1, 1),
-(2789, 3, '1', 31, 1, 1),
-(2790, 4, '1', 31, 1, 1),
-(2791, 5, '1', 31, 1, 1),
-(2792, 6, '1', 31, 1, 1),
-(2793, 7, '1', 31, 1, 1),
-(2794, 8, '1', 31, 1, 1),
-(2795, 9, '1', 31, 1, 1),
-(2796, 10, '1', 31, 1, 1),
-(2797, 1, '1', 32, 1, 1),
-(2798, 2, '1', 32, 1, 1),
-(2799, 3, '1', 32, 1, 1),
-(2800, 4, '1', 32, 1, 1),
-(2801, 5, '1', 32, 1, 1),
-(2802, 6, '1', 32, 1, 1),
-(2803, 7, '1', 32, 1, 1),
-(2804, 8, '1', 32, 1, 1),
-(2805, 9, '1', 32, 1, 1),
-(2806, 10, '1', 32, 1, 1),
-(2807, 1, '1', 33, 1, 1),
-(2808, 2, '1', 33, 1, 1),
-(2809, 3, '1', 33, 1, 1),
-(2810, 4, '1', 33, 1, 1),
-(2811, 5, '1', 33, 1, 1),
-(2812, 6, '1', 33, 1, 1),
-(2813, 7, '1', 33, 1, 1),
-(2814, 8, '1', 33, 1, 1),
-(2815, 9, '1', 33, 1, 1),
-(2816, 10, '1', 33, 1, 1),
-(2817, 1, '1', 34, 1, 1),
-(2818, 2, '1', 34, 1, 1),
-(2819, 3, '1', 34, 1, 1),
-(2820, 4, '1', 34, 1, 1),
-(2821, 5, '1', 34, 1, 1),
-(2822, 6, '1', 34, 1, 1),
-(2823, 7, '1', 34, 1, 1),
-(2824, 8, '1', 34, 1, 1),
-(2825, 9, '1', 34, 1, 1),
-(2826, 10, '1', 34, 1, 1),
-(2827, 1, '1', 35, 1, 1),
-(2828, 2, '1', 35, 1, 1),
-(2829, 3, '1', 35, 1, 1),
-(2830, 4, '1', 35, 1, 1),
-(2831, 5, '1', 35, 1, 1),
-(2832, 6, '1', 35, 1, 1),
-(2833, 7, '1', 35, 1, 1),
-(2834, 8, '1', 35, 1, 1),
-(2835, 9, '1', 35, 1, 1),
-(2836, 10, '1', 35, 1, 1),
-(2837, 1, '1', 36, 1, 1),
-(2838, 2, '1', 36, 1, 1),
-(2839, 3, '1', 36, 1, 1),
-(2840, 4, '1', 36, 1, 1),
-(2841, 5, '1', 36, 1, 1),
-(2842, 6, '1', 36, 1, 1),
-(2843, 7, '1', 36, 1, 1),
-(2844, 8, '1', 36, 1, 1),
-(2845, 9, '1', 36, 1, 1),
-(2846, 10, '1', 36, 1, 1),
-(2847, 1, '1', 37, 1, 1),
-(2848, 2, '1', 37, 1, 1),
-(2849, 3, '1', 37, 1, 1),
-(2850, 4, '1', 37, 1, 1),
-(2851, 5, '1', 37, 1, 1),
-(2852, 6, '1', 37, 1, 1),
-(2853, 7, '1', 37, 1, 1),
-(2854, 8, '1', 37, 1, 1),
-(2855, 9, '1', 37, 1, 1),
-(2856, 10, '1', 37, 1, 1);
+(3041, 1, '1', 4, 1, 1),
+(3042, 2, '1', 4, 1, 1),
+(3043, 3, '1', 4, 1, 1),
+(3044, 4, '1', 4, 1, 1),
+(3045, 5, '1', 4, 1, 1),
+(3046, 6, '1', 4, 1, 1),
+(3047, 7, '1', 4, 1, 1),
+(3048, 8, '1', 4, 1, 1),
+(3049, 9, '1', 4, 1, 1),
+(3050, 10, '1', 4, 1, 1),
+(3051, 1, '1', 5, 1, 1),
+(3052, 2, '1', 5, 1, 1),
+(3053, 3, '1', 5, 1, 1),
+(3054, 4, '1', 5, 1, 1),
+(3055, 5, '1', 5, 1, 1),
+(3056, 6, '1', 5, 1, 1),
+(3057, 7, '1', 5, 1, 1),
+(3058, 8, '1', 5, 1, 1),
+(3059, 9, '1', 5, 1, 1),
+(3060, 10, '1', 5, 1, 1),
+(3061, 1, '1', 6, 1, 1),
+(3062, 2, '1', 6, 1, 1),
+(3063, 3, '1', 6, 1, 1),
+(3064, 4, '1', 6, 1, 1),
+(3065, 5, '1', 6, 1, 1),
+(3066, 6, '1', 6, 1, 1),
+(3067, 7, '1', 6, 1, 1),
+(3068, 8, '1', 6, 1, 1),
+(3069, 9, '1', 6, 1, 1),
+(3070, 10, '1', 6, 1, 1),
+(3071, 1, '1', 7, 1, 1),
+(3072, 2, '1', 7, 1, 1),
+(3073, 3, '1', 7, 1, 1),
+(3074, 4, '1', 7, 1, 1),
+(3075, 5, '1', 7, 1, 1),
+(3076, 6, '1', 7, 1, 1),
+(3077, 7, '1', 7, 1, 1),
+(3078, 8, '1', 7, 1, 1),
+(3079, 9, '1', 7, 1, 1),
+(3080, 10, '1', 7, 1, 1),
+(3081, 1, '1', 8, 1, 1),
+(3082, 2, '1', 8, 1, 1),
+(3083, 3, '1', 8, 1, 1),
+(3084, 4, '1', 8, 1, 1),
+(3085, 5, '1', 8, 1, 1),
+(3086, 6, '1', 8, 1, 1),
+(3087, 7, '1', 8, 1, 1),
+(3088, 8, '1', 8, 1, 1),
+(3089, 9, '1', 8, 1, 1),
+(3090, 10, '1', 8, 1, 1),
+(3091, 1, '1', 27, 1, 1),
+(3092, 2, '1', 27, 1, 1),
+(3093, 3, '1', 27, 1, 1),
+(3094, 4, '1', 27, 1, 1),
+(3095, 5, '1', 27, 1, 1),
+(3096, 6, '1', 27, 1, 1),
+(3097, 7, '1', 27, 1, 1),
+(3098, 8, '1', 27, 1, 1),
+(3099, 9, '1', 27, 1, 1),
+(3100, 10, '1', 27, 1, 1),
+(3101, 1, '1', 28, 1, 1),
+(3102, 2, '1', 28, 1, 1),
+(3103, 3, '1', 28, 1, 1),
+(3104, 4, '1', 28, 1, 1),
+(3105, 5, '1', 28, 1, 1),
+(3106, 6, '1', 28, 1, 1),
+(3107, 7, '1', 28, 1, 1),
+(3108, 8, '1', 28, 1, 1),
+(3109, 9, '1', 28, 1, 1),
+(3110, 10, '1', 28, 1, 1),
+(3111, 1, '1', 29, 1, 1),
+(3112, 2, '1', 29, 1, 1),
+(3113, 3, '1', 29, 1, 1),
+(3114, 4, '1', 29, 1, 1),
+(3115, 5, '1', 29, 1, 1),
+(3116, 6, '1', 29, 1, 1),
+(3117, 7, '1', 29, 1, 1),
+(3118, 8, '1', 29, 1, 1),
+(3119, 9, '1', 29, 1, 1),
+(3120, 10, '1', 29, 1, 1),
+(3121, 1, '1', 30, 1, 1),
+(3122, 2, '1', 30, 1, 1),
+(3123, 3, '1', 30, 1, 1),
+(3124, 4, '1', 30, 1, 1),
+(3125, 5, '1', 30, 1, 1),
+(3126, 6, '1', 30, 1, 1),
+(3127, 7, '1', 30, 1, 1),
+(3128, 8, '1', 30, 1, 1),
+(3129, 9, '1', 30, 1, 1),
+(3130, 10, '1', 30, 1, 1),
+(3131, 1, '1', 31, 1, 1),
+(3132, 2, '1', 31, 1, 1),
+(3133, 3, '1', 31, 1, 1),
+(3134, 4, '1', 31, 1, 1),
+(3135, 5, '1', 31, 1, 1),
+(3136, 6, '1', 31, 1, 1),
+(3137, 7, '1', 31, 1, 1),
+(3138, 8, '1', 31, 1, 1),
+(3139, 9, '1', 31, 1, 1),
+(3140, 10, '1', 31, 1, 1),
+(3141, 1, '1', 32, 1, 1),
+(3142, 2, '1', 32, 1, 1),
+(3143, 3, '1', 32, 1, 1),
+(3144, 4, '1', 32, 1, 1),
+(3145, 5, '1', 32, 1, 1),
+(3146, 6, '1', 32, 1, 1),
+(3147, 7, '1', 32, 1, 1),
+(3148, 8, '1', 32, 1, 1),
+(3149, 9, '1', 32, 1, 1),
+(3150, 10, '1', 32, 1, 1),
+(3151, 1, '1', 33, 1, 1),
+(3152, 2, '1', 33, 1, 1),
+(3153, 3, '1', 33, 1, 1),
+(3154, 4, '1', 33, 1, 1),
+(3155, 5, '1', 33, 1, 1),
+(3156, 6, '1', 33, 1, 1),
+(3157, 7, '1', 33, 1, 1),
+(3158, 8, '1', 33, 1, 1),
+(3159, 9, '1', 33, 1, 1),
+(3160, 10, '1', 33, 1, 1),
+(3161, 1, '1', 34, 1, 1),
+(3162, 2, '1', 34, 1, 1),
+(3163, 3, '1', 34, 1, 1),
+(3164, 4, '1', 34, 1, 1),
+(3165, 5, '1', 34, 1, 1),
+(3166, 6, '1', 34, 1, 1),
+(3167, 7, '1', 34, 1, 1),
+(3168, 8, '1', 34, 1, 1),
+(3169, 9, '1', 34, 1, 1),
+(3170, 10, '1', 34, 1, 1),
+(3171, 1, '1', 35, 1, 1),
+(3172, 2, '1', 35, 1, 1),
+(3173, 3, '1', 35, 1, 1),
+(3174, 4, '1', 35, 1, 1),
+(3175, 5, '1', 35, 1, 1),
+(3176, 6, '1', 35, 1, 1),
+(3177, 7, '1', 35, 1, 1),
+(3178, 8, '1', 35, 1, 1),
+(3179, 9, '1', 35, 1, 1),
+(3180, 10, '1', 35, 1, 1),
+(3181, 1, '1', 36, 1, 1),
+(3182, 2, '1', 36, 1, 1),
+(3183, 3, '1', 36, 1, 1),
+(3184, 4, '1', 36, 1, 1),
+(3185, 5, '1', 36, 1, 1),
+(3186, 6, '1', 36, 1, 1),
+(3187, 7, '1', 36, 1, 1),
+(3188, 8, '1', 36, 1, 1),
+(3189, 9, '1', 36, 1, 1),
+(3190, 10, '1', 36, 1, 1),
+(3191, 1, '1', 37, 1, 1),
+(3192, 2, '1', 37, 1, 1),
+(3193, 3, '1', 37, 1, 1),
+(3194, 4, '1', 37, 1, 1),
+(3195, 5, '1', 37, 1, 1),
+(3196, 6, '1', 37, 1, 1),
+(3197, 7, '1', 37, 1, 1),
+(3198, 8, '1', 37, 1, 1),
+(3199, 9, '1', 37, 1, 1),
+(3200, 10, '1', 37, 1, 1),
+(3201, 1, '1', 39, 1, 1),
+(3202, 2, '1', 39, 1, 1),
+(3203, 3, '1', 39, 1, 1),
+(3204, 4, '1', 39, 1, 1),
+(3205, 5, '1', 39, 1, 1),
+(3206, 6, '1', 39, 1, 1),
+(3207, 7, '1', 39, 1, 1),
+(3208, 8, '1', 39, 1, 1),
+(3209, 9, '1', 39, 1, 1),
+(3210, 10, '1', 39, 1, 1),
+(3211, 1, '1', 40, 1, 1),
+(3212, 2, '1', 40, 1, 1),
+(3213, 3, '1', 40, 1, 1),
+(3214, 4, '1', 40, 1, 1),
+(3215, 5, '1', 40, 1, 1),
+(3216, 6, '1', 40, 1, 1),
+(3217, 7, '1', 40, 1, 1),
+(3218, 8, '1', 40, 1, 1),
+(3219, 9, '1', 40, 1, 1),
+(3220, 10, '1', 40, 1, 1),
+(3221, 1, '1', 41, 1, 1),
+(3222, 2, '1', 41, 1, 1),
+(3223, 3, '1', 41, 1, 1),
+(3224, 4, '1', 41, 1, 1),
+(3225, 5, '1', 41, 1, 1),
+(3226, 6, '1', 41, 1, 1),
+(3227, 7, '1', 41, 1, 1),
+(3228, 8, '1', 41, 1, 1),
+(3229, 9, '1', 41, 1, 1),
+(3230, 10, '1', 41, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -4390,6 +4547,53 @@ INSERT INTO `systemRole` (`id`, `name`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `systemSize`
+--
+
+CREATE TABLE `systemSize` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(32) DEFAULT NULL,
+  `type` varchar(32) NOT NULL COMMENT 'Tipo de tamaño de hoja'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tamaño de la hoja';
+
+--
+-- Volcado de datos para la tabla `systemSize`
+--
+
+INSERT INTO `systemSize` (`id`, `name`, `type`) VALUES
+(1, 'CARTA', 'Letter'),
+(2, 'OFICIO', 'Legal'),
+(3, 'DOBLE CARTA', 'Tabloid'),
+(4, 'Comm10E', 'Comm10E'),
+(5, 'DLE', 'DLE'),
+(6, 'Executive', 'Executive'),
+(7, 'FOLIO', 'Folio'),
+(8, 'LEDGER', 'Ledger'),
+(9, 'A0', 'A0'),
+(10, 'A1', 'A1'),
+(11, 'A2', 'A2'),
+(12, 'A3', 'A3'),
+(13, 'A4', 'A4'),
+(14, 'A5', 'A5'),
+(15, 'A6', 'A6'),
+(16, 'A7', 'A7'),
+(17, 'A8', 'A8'),
+(18, 'A9', 'A9'),
+(19, 'B0', 'B0'),
+(20, 'B1', 'B1'),
+(21, 'B2', 'B2'),
+(22, 'B3', 'B3'),
+(23, 'B4', 'B4'),
+(24, 'B5', 'B5'),
+(25, 'B6', 'B6'),
+(26, 'B7', 'B7'),
+(27, 'B8', 'B8'),
+(28, 'B9', 'B9'),
+(29, 'C5E', 'C5E');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `systemTemplate`
 --
 
@@ -4398,15 +4602,26 @@ CREATE TABLE `systemTemplate` (
   `name` varchar(32) DEFAULT NULL COMMENT 'Nombre de la plantilla',
   `json` longtext DEFAULT NULL COMMENT 'Json para crear los campos',
   `header` longtext DEFAULT NULL COMMENT 'Header de la plantilla',
-  `html` longtext DEFAULT NULL COMMENT 'Html para el wkhtmltopdf',
+  `body` longtext DEFAULT NULL COMMENT 'Html para el wkhtmltopdf',
   `footer` longtext DEFAULT NULL COMMENT 'Footer de la plantilla',
-  `orientation` int(11) NOT NULL COMMENT 'Catalogo de orientacion de la hoja',
-  `size` int(11) DEFAULT NULL COMMENT 'Catalogo de tamaño de la hoja',
+  `orientation` int(10) UNSIGNED NOT NULL,
+  `size` int(10) UNSIGNED NOT NULL,
   `headerSpacing` int(11) DEFAULT NULL COMMENT 'Espaciado del header',
   `footerSpacing` int(11) DEFAULT NULL COMMENT 'Espaciado del Footer',
-  `frontPage` tinyint(4) DEFAULT NULL COMMENT 'Portada del documento\n0 -> Sin portada\n1 -> Con portada',
-  `script` text DEFAULT NULL COMMENT 'Si usamos un script para el wkhtmltopdf'
+  `frontPage` longtext DEFAULT NULL COMMENT 'Portada del documento',
+  `script` text DEFAULT NULL COMMENT 'Si usamos un script para el wkhtmltopdf',
+  `marginLeft` int(11) NOT NULL DEFAULT 0,
+  `marginRight` int(11) NOT NULL DEFAULT 0,
+  `marginTop` int(11) NOT NULL DEFAULT 0 COMMENT 'Margen de arriba',
+  `marginBottom` int(11) NOT NULL DEFAULT 0 COMMENT 'Margen de abajo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Core para crear plantillas de documentos';
+
+--
+-- Volcado de datos para la tabla `systemTemplate`
+--
+
+INSERT INTO `systemTemplate` (`id`, `name`, `json`, `header`, `body`, `footer`, `orientation`, `size`, `headerSpacing`, `footerSpacing`, `frontPage`, `script`, `marginLeft`, `marginRight`, `marginTop`, `marginBottom`) VALUES
+(1, 'Prueba', '{\n  \"Checkbox\": {\n    \"dynamic\": \"El campo dynamic si es true es dinamico y si es false es estatico\",\n    \"class\": \"form-check\",\n    \"checked\": \"\",\n    \"id\": \"Checkbox\",\n    \"label\": \"Checkbox\",\n    \"name\": \"\",\n    \"placeholder\": \"Checkbox\",\n    \"required\": \"\",\n    \"tag\": \"<!--####-->\",\n    \"type\": \"checkbox\",\n    \"value\": \"\"\n  },\n  \"Color\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control form-control-color\",\n    \"id\": \"\",\n    \"label\": \"Color\",\n    \"name\": \"\",\n    \"placeholder\": \"Color\",\n    \"required\": \"\",\n    \"tag\": \"<!--####-->\",\n    \"type\": \"color\",\n    \"value\": \"\"\n  },\n  \"Date\": {\n    \"dynamic\": \"\",\n    \"class\": \" form-control focused e_fecha e_requerido e_longitud\",\n    \"id\": \"\",\n    \"label\": \"Date\",\n    \"maximo\": \"2999-12-31\",\n    \"mensaje\": \"Seleccione una fecha entre 1900-01-01 y 2999-12-31\",\n    \"minimo\": \"1900-01-01\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"Date\",\n    \"required\": \"\",\n    \"tag\": \"<!--####-->\",\n    \"type\": \"date\",\n    \"value\": \"\"\n  },\n  \"Datetime\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control \",\n    \"id\": \"\",\n    \"label\": \"Datetime\",\n    \"maximo\": \"2999-12-31T00:00\",\n    \"mensaje\": \"Seleccione una fecha entre 1900-01-01 00:00 y 2999-12-31 00:00\",\n    \"minimo\": \"1900-01-01T00:00\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"Datetime\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Datetime##-->\",\n    \"type\": \"datetime\",\n    \"value\": \"\"\n  },\n  \"Datetime-local\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control \",\n    \"id\": \"\",\n    \"label\": \"Datetime-local\",\n    \"maximo\": \"2999-12-31T00:00\",\n    \"mensaje\": \"Seleccione una fecha entre 1900-01-01 00:00 y 2999-12-31 00:00\",\n    \"minimo\": \"1900-01-01T00:00\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"Datetime-local\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Datetime-local##-->\",\n    \"type\": \"datetime-local\",\n    \"value\": \"\"\n  },\n  \"Email\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused e_longitud is-valid\",\n    \"id\": \"\",\n    \"label\": \"Email\",\n    \"maximo\": \"1000\",\n    \"mensaje\": \"Introduce un valor entre 1 y 1000 caracteres de longitud\",\n    \"minimo\": \"0\",\n    \"multiple\": \"\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"Email\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Email##-->\",\n    \"type\": \"email\",\n    \"value\": \"\"\n  },\n  \"File\": {\n    \"dynamic\": \"\",\n    \"accept\": \"audio/*, video/*, image/*\",\n    \"class\": \"form-control \",\n    \"id\": \"\",\n    \"label\": \"File\",\n    \"maximo\": \"1000\",\n    \"mensaje\": \"Introduce un valor entre 1 y 1000 caracteres de longitud\",\n    \"minimo\": \"0\",\n    \"multiple\": \"\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"required\": \"\",\n    \"tag\": \"<!--##File##-->\",\n    \"type\": \"file\",\n    \"value\": \"\"\n  },\n  \"Month\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control \",\n    \"id\": \"\",\n    \"label\": \"Month\",\n    \"maximo\": \"2999-12\",\n    \"mensaje\": \"Seleccione un mes entre 1900-01 y 2999-12\",\n    \"minimo\": \"1900-01\",\n    \"name\": \"\",\n    \"pattern\": \"[0-9]{4}-[0-9]{2}\",\n    \"placeholder\": \"Month\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Month##-->\",\n    \"type\": \"month\",\n    \"value\": \"\"\n  },\n  \"Number\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control e_numero\",\n    \"id\": \"\",\n    \"function\": \"Este campo establece si el numero sera sumado, divido, restado, multiplicado, etc (add, split, subtract, multiply)\",\n    \"label\": \"Number\",\n    \"maximo\": \"1000000\",\n    \"mensaje\": \"Introduce un valor entre 1.00 y 1000000.00\",\n    \"minimo\": \"0\",\n    \"name\": \"\",\n    \"pattern\": \"[0-9]\",\n    \"placeholder\": \"Number\",\n    \"required\": \"\",\n    \"step\": \"0.01\",\n    \"tag\": \"<!--##Number##-->\",\n    \"type\": \"number\",\n    \"value\": \"\"\n  },\n  \"NumberDecimal\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control e_numero\",\n    \"id\": \"\",\n    \"label\": \"NumberDecimal\",\n    \"maximo\": \"1000000\",\n    \"mensaje\": \"Introduce un valor entre 1.00 y 1000000.00\",\n    \"minimo\": \"0\",\n    \"name\": \"\",\n    \"pattern\": \"[0-9]+([.,][0-9]+)?\",\n    \"placeholder\": \"NumberDecimal\",\n    \"required\": \"\",\n    \"step\": \"0.01\",\n    \"tag\": \"<!--##NumberDecimal##-->\",\n    \"type\": \"number\",\n    \"value\": \"\"\n  },\n  \"Password\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused e_longitud is-valid\",\n    \"id\": \"\",\n    \"inputmode\": \"\",\n    \"label\": \"Password\",\n    \"maximo\": \"100\",\n    \"mensaje\": \"Introduce un valor entre 1 y 100 caracteres de longitud\",\n    \"minimo\": \"1\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"Password\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Password##-->\",\n    \"type\": \"password\",\n    \"value\": \"\"\n  },\n  \"Radio\": {\n    \"dynamic\": \"\",\n    \"checked\": \"\",\n    \"class\": \"form-check-input\",\n    \"id\": \"\",\n    \"label\": \"Radio\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"Radio\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Radio##-->\",\n    \"type\": \"radio\",\n    \"value\": \"\"\n  },\n  \"Range\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused  e_longitud\",\n    \"id\": \"\",\n    \"label\": \"Range\",\n    \"maximo\": \"1000\",\n    \"mensaje\": \"Introduce un valor entre 1 y 1000 caracteres de longitud\",\n    \"minimo\": \"1\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"Range\",\n    \"required\": \"\",\n    \"step\": \"1\",\n    \"tag\": \"<!--##Range##-->\",\n    \"type\": \"range\",\n    \"value\": \"\"\n  },\n  \"Select\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused is-valid custom-select\",\n    \"id\": \"\",\n    \"item\": [\n      {\n        \"value\": \"gg\",\n        \"name\": \"gg\",\n        \"selected\": \"\"\n      },\n      {\n        \"value\": \"gg\",\n        \"name\": \"gg\",\n        \"selected\": \"\"\n      }\n    ],\n    \"label\": \"Select\",\n    \"maximo\": \"\",\n    \"mensaje\": \"Selecciona una opcion\",\n    \"minimo\": \"\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"Select\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Select##-->\",\n    \"type\": \"select\",\n    \"value\": \"\"\n  },\n  \"SelectBD\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused is-valid custom-select\",\n    \"id\": \"\",\n    \"item\": [\n      {\n        \"value\": \"consulta a la bd\",\n        \"name\": \"bd\",\n        \"selected\": \"\"\n      }\n    ],\n    \"label\": \"SelectBD\",\n    \"maximo\": \"\",\n    \"mensaje\": \"Selecciona una opcion\",\n    \"minimo\": \"\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"SelectBD\",\n    \"required\": \"\",\n    \"tag\": \"<!--##SelectBD##-->\",\n    \"type\": \"select\",\n    \"value\": \"\"\n  },\n  \"Tel\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused  e_longitud\",\n    \"id\": \"\",\n    \"label\": \"Tel\",\n    \"maximo\": \"1000\",\n    \"mensaje\": \"Introduce un valor entre 1 y 1000 caracteres de longitud\",\n    \"minimo\": \"1\",\n    \"name\": \"\",\n    \"pattern\": \"[0-9]{3}-[0-9]{3}-[0-9]{4}\",\n    \"placeholder\": \"Tel\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Tel##-->\",\n    \"type\": \"text\",\n    \"value\": \"\"\n  },\n  \"Text\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused e_longitud is-valid\",\n    \"id\": \"\",\n    \"label\": \"Text\",\n    \"maximo\": \"1000\",\n    \"mensaje\": \"Introduce un valor entre 1 y 1000 caracteres de longitud\",\n    \"minimo\": \"1\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"Text\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Text##-->\",\n    \"type\": \"text\",\n    \"value\": \"\"\n  },\n  \"TextArea\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused e_longitud is-valid\",\n    \"id\": \"\",\n    \"label\": \"TextArea\",\n    \"maximo\": \"1000\",\n    \"mensaje\": \"Introduce un valor entre 1 y 1000 caracteres de longitud\",\n    \"minimo\": \"1\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"TextArea\",\n    \"required\": \"\",\n    \"tag\": \"<!--##TextArea##-->\",\n    \"type\": \"textarea\",\n    \"value\": \"\"\n  },\n  \"Time\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused  e_longitud\",\n    \"id\": \"\",\n    \"label\": \"Time\",\n    \"maximo\": \"00:01\",\n    \"mensaje\": \"Introduce una hora entre 00:00 y 23:59\",\n    \"minimo\": \"23:59\",\n    \"name\": \"\",\n    \"pattern\": \"[0-9]{2}:[0-9]{2}\",\n    \"placeholder\": \"Time\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Time##-->\",\n    \"type\": \"time\",\n    \"step\": \"\",\n    \"value\": \"\"\n  },\n  \"Url\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused  e_longitud\",\n    \"id\": \"\",\n    \"label\": \"Url\",\n    \"maximo\": \"1000\",\n    \"mensaje\": \"Introduce un valor entre 1 y 1000 caracteres de longitud\",\n    \"minimo\": \"1\",\n    \"name\": \"\",\n    \"pattern\": \"https://.*\",\n    \"placeholder\": \"Url\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Url##-->\",\n    \"type\": \"url\",\n    \"value\": \"\"\n  },\n  \"Week\": {\n    \"dynamic\": \"\",\n    \"class\": \"form-control focused  e_longitud\",\n    \"id\": \"\",\n    \"label\": \"Week\",\n    \"maximo\": \"2999-W45\",\n    \"mensaje\": \"Introduce una semana entre 1900-W45 y 2999-W45\",\n    \"minimo\": \"1900-W45\",\n    \"name\": \"\",\n    \"pattern\": \"\",\n    \"placeholder\": \"Week\",\n    \"required\": \"\",\n    \"tag\": \"<!--##Week##-->\",\n    \"type\": \"week\",\n    \"value\": \"\"\n  }\n}', NULL, '<h1>datos</h1>\n<!--##DATA##-->', NULL, 1, 1, 11, 4, NULL, NULL, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4538,6 +4753,12 @@ ALTER TABLE `systemMenu`
   ADD KEY `Fk_sistemMenu_systemIcon` (`idSystemIcon`);
 
 --
+-- Indices de la tabla `systemOrientation`
+--
+ALTER TABLE `systemOrientation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `systemPrivileges`
 --
 ALTER TABLE `systemPrivileges`
@@ -4563,10 +4784,18 @@ ALTER TABLE `systemRole`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `systemSize`
+--
+ALTER TABLE `systemSize`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `systemTemplate`
 --
 ALTER TABLE `systemTemplate`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_systemTemplate_systemSize` (`size`),
+  ADD KEY `fk_systemtemplate` (`orientation`);
 
 --
 -- Indices de la tabla `systemTypeElement`
@@ -4610,7 +4839,7 @@ ALTER TABLE `systemConfig`
 -- AUTO_INCREMENT de la tabla `systemDocument`
 --
 ALTER TABLE `systemDocument`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `systemIcon`
@@ -4622,13 +4851,19 @@ ALTER TABLE `systemIcon`
 -- AUTO_INCREMENT de la tabla `systemLog`
 --
 ALTER TABLE `systemLog`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13096;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13191;
 
 --
 -- AUTO_INCREMENT de la tabla `systemMenu`
 --
 ALTER TABLE `systemMenu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT de la tabla `systemOrientation`
+--
+ALTER TABLE `systemOrientation`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `systemPrivileges`
@@ -4640,7 +4875,7 @@ ALTER TABLE `systemPrivileges`
 -- AUTO_INCREMENT de la tabla `systemPrivilegesUserRole`
 --
 ALTER TABLE `systemPrivilegesUserRole`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2857;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3231;
 
 --
 -- AUTO_INCREMENT de la tabla `systemRepository`
@@ -4655,10 +4890,16 @@ ALTER TABLE `systemRole`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
+-- AUTO_INCREMENT de la tabla `systemSize`
+--
+ALTER TABLE `systemSize`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
 -- AUTO_INCREMENT de la tabla `systemTemplate`
 --
 ALTER TABLE `systemTemplate`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `systemTypeElement`
@@ -4705,6 +4946,13 @@ ALTER TABLE `systemMenu`
 --
 ALTER TABLE `systemPrivilegesUserRole`
   ADD CONSTRAINT `Fk_systemPrivilegesUserRole_systemPrivileges` FOREIGN KEY (`idSystemPrivileges`) REFERENCES `systemPrivileges` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `systemTemplate`
+--
+ALTER TABLE `systemTemplate`
+  ADD CONSTRAINT `fk_systemTemplate_systemSize` FOREIGN KEY (`size`) REFERENCES `systemSize` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_systemtemplate` FOREIGN KEY (`orientation`) REFERENCES `systemOrientation` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `systemUser`
