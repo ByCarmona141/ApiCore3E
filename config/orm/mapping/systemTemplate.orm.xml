@@ -9,15 +9,16 @@
         <field name="header" type="text" nullable="true" column="`header`"/>
         <field name="body" type="text" nullable="false" column="`body`"/>
         <field name="footer" type="text" nullable="true" column="`footer`"/>
-        <field name="orientation" type="integer" nullable="false" column="`orientation`"/>
-        <field name="size" type="integer" nullable="false" column="`size`"/>
+        <field name="idSystemOrientation" type="integer" nullable="false" column="`idSystemOrientation`"/>
+        <field name="idSystemSize" type="integer" nullable="false" column="`idSystemSize`"/>
         <field name="headerSpacing" type="integer" nullable="true" column="`headerSpacing`"/>
         <field name="footerSpacing" type="integer" nullable="true" column="`footerSpacing`"/>
-        <field name="frontPage" type="text" nullable="true" column="`frontPage`"/>
+        <field name="idSystemFrontPage" type="integer" nullable="true" column="`idSystemFrontPage`"/>
         <field name="marginLeft" type="integer" nullable="true" column="`marginLeft`"/>
         <field name="marginRight" type="integer" nullable="true" column="`marginRight`"/>
         <field name="marginTop" type="integer" nullable="true" column="`marginTop`"/>
         <field name="marginBottom" type="integer" nullable="true" column="`marginBottom`"/>
         <field name="script" type="text" nullable="true" column="`script`"/>
+        <field name="paginate" type="integer" nullable="true" column="`paginate`"/>
     </entity>
 </doctrine-mapping>

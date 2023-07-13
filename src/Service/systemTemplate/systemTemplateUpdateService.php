@@ -22,7 +22,7 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function update(int $id, string $name, ?string $json, ?string $header, string $body, ?string $footer, int $orientation, int $size, ?int $headerSpacing, ?int $footerSpacing, ?string $frontPage, ?int $marginLeft, ?int $marginRight, ?int $marginTop, ?int $marginBottom, ?string $script): systemTemplate {
+        public function update(int $id, string $name, ?string $json, ?string $header, string $body, ?string $footer, int $idSystemOrientation, int $idSystemSize, ?int $headerSpacing, ?int $footerSpacing, ?int $idSystemFrontPage, ?int $marginLeft, ?int $marginRight, ?int $marginTop, ?int $marginBottom, ?string $script, ?int $paginate): systemTemplate {
             $systemTemplate = $this->repository->findById($id);
             
             $systemTemplate->setName($name);
@@ -30,16 +30,17 @@
             $systemTemplate->setHeader($header);
             $systemTemplate->setBody($body);
             $systemTemplate->setFooter($footer);
-            $systemTemplate->setOrientation($orientation);
-            $systemTemplate->setSize($size);
+            $systemTemplate->setIdSystemOrientation($idSystemOrientation);
+            $systemTemplate->setIdSystemSize($idSystemSize);
             $systemTemplate->setHeaderSpacing($headerSpacing);
             $systemTemplate->setFooterSpacing($footerSpacing);
-            $systemTemplate->setFrontPage($frontPage);
+            $systemTemplate->setIdSystemFrontPage($idSystemFrontPage);
             $systemTemplate->setScript($script);
             $systemTemplate->setMarginLeft($marginLeft);
             $systemTemplate->setMarginRight($marginRight);
             $systemTemplate->setMarginTop($marginTop);
             $systemTemplate->setMarginBottom($marginBottom);
+            $systemTemplate->setPaginate($paginate);
 
             $this->repository->save($systemTemplate);
 
@@ -49,16 +50,17 @@
                 'header' => $systemTemplate->getHeader(),
                 'body' => $systemTemplate->getBody(),
                 'footer' => $systemTemplate->getFooter(),
-                'orientation' => $systemTemplate->getOrientation(),
-                'size' => $systemTemplate->getSize(),
-                'headerSpacing' => $systemTemplate->getHeaderSpacing(),
-                'footerSpacing' => $systemTemplate->getFooterSpacing(),
-                'frontPage' => $systemTemplate->getFrontPage(),
+                'idSystemOrientation' => $systemTemplate->getIdSystemOrientation(),
+                'idSystemSize' => $systemTemplate->getIdSystemSize(),
+                'headerSpacing' => $systemTemplate->getheaderSpacing(),
+                'footerSpacing' => $systemTemplate->getfooterSpacing(),
+                'idSystemFrontPage' => $systemTemplate->getIdSystemFrontPage(),
+                'script' => $systemTemplate->getScript(),
                 'marginLeft' => $systemTemplate->getMarginLeft(),
                 'marginRight' => $systemTemplate->getMarginRight(),
                 'marginTop' => $systemTemplate->getMarginTop(),
                 'marginBottom' => $systemTemplate->getMarginBottom(),
-                'script' => $systemTemplate->getScript()
+                'paginate' => $systemTemplate->getPaginate()
             ];
             $this->accesoService->create('systemTemplate', $id, 5, $data);
 

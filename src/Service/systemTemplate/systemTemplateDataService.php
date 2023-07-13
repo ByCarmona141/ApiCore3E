@@ -25,17 +25,22 @@
         public function data(int $id): systemTemplate {
             $systemTemplate = $this->repository->findById($id);
             $data = [
-                'name' => $systemTemplate->getname(),
-                'json' => $systemTemplate->getjson(),
-                'header' => $systemTemplate->getheader(),
-                'body' => $systemTemplate->getbody(),
-                'footer' => $systemTemplate->getfooter(),
-                'orientation' => $systemTemplate->getorientation(),
-                'size' => $systemTemplate->getsize(),
+                'name' => $systemTemplate->getName(),
+                'json' => $systemTemplate->getJson(),
+                'header' => $systemTemplate->getHeader(),
+                'body' => $systemTemplate->getBody(),
+                'footer' => $systemTemplate->getFooter(),
+                'idSystemOrientation' => $systemTemplate->getIdSystemOrientation(),
+                'idSystemSize' => $systemTemplate->getIdSystemSize(),
                 'headerSpacing' => $systemTemplate->getheaderSpacing(),
                 'footerSpacing' => $systemTemplate->getfooterSpacing(),
-                'frontPage' => $systemTemplate->getfrontPage(),
-                'script' => $systemTemplate->getscript()
+                'idSystemFrontPage' => $systemTemplate->getIdSystemFrontPage(),
+                'script' => $systemTemplate->getScript(),
+                'marginLeft' => $systemTemplate->getMarginLeft(),
+                'marginRight' => $systemTemplate->getMarginRight(),
+                'marginTop' => $systemTemplate->getMarginTop(),
+                'marginBottom' => $systemTemplate->getMarginBottom(),
+                'paginate' => $systemTemplate->getPaginate()
             ];
 
             $this->accesoService->create('systemTemplate', $id, 4, $data);

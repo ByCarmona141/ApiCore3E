@@ -9,6 +9,7 @@ use App\Libraries\Wkhtmltopdf;
 use App\Repository\systemDocumentRepository;
 use App\Repository\systemOrientationRepository;
 use App\Repository\systemSizeRepository;
+use App\Repository\systemTemplateFrontPageRepository;
 use App\Repository\systemTemplateRepository;
 use App\Service\systemLog\systemLogRegisterService;
 use Clegginabox\PDFMerger\PDFMerger;
@@ -18,15 +19,19 @@ use Doctrine\ORM\ORMException;
 class systemDocumentReportService {
     private systemDocumentRepository $repository;
     private systemTemplateRepository $systemTemplateRepository;
+    private systemTemplateFrontPageRepository $systemTemplateFrontPageRepository;
     private systemOrientationRepository $systemOrientationRepository;
     private systemSizeRepository $systemSizeRepository;
     private systemLogRegisterService $accesoService;
 
-    public function __construct(systemDocumentRepository $repository, systemTemplateRepository $systemTemplateRepository, systemOrientationRepository $systemOrientationRepository, systemSizeRepository $systemSizeRepository, systemLogRegisterService $accesoService) {
+    public function __construct(systemDocumentRepository $repository, systemTemplateRepository $systemTemplateRepository, systemTemplateFrontPageRepository $systemTemplateFrontPageRepository, systemOrientationRepository $systemOrientationRepository, systemSizeRepository $systemSizeRepository, systemLogRegisterService $accesoService) {
         $this->repository = $repository;
 
         // Repositorio de systemTemplate
         $this->systemTemplateRepository = $systemTemplateRepository;
+
+        // Repositorio de systemTemplateFrontPage
+        $this->systemTemplateFrontPageRepository = $systemTemplateFrontPageRepository;
 
         // Configuracion de la hoja
         $this->systemOrientationRepository = $systemOrientationRepository;
@@ -47,33 +52,67 @@ class systemDocumentReportService {
         // Obtenemos los datos de la plantilla
         $systemTemplate = $this->systemTemplateRepository->findById($systemDocument->getIdSystemTemplate());
 
-        // Obtenemos la orientacion de la hoja
-        $systemOrientation = $this->systemOrientationRepository->findById($systemTemplate->getOrientation());
-
-        // Obtenemos el tamaño de la hoja
-        $systemSize = $this->systemSizeRepository->findById($systemTemplate->getSize());
-
-        // Configuracion de documento
+        // Configuracion de la portada
         $SourceFrontPage = [];
         $SourceHeader = [];
         $SourceFooter = [];
 
-        // Si el pdf tiene una portada
-        if(!empty($systemTemplate->getFrontPage())) {
-            // Obtenemos el template
-            $templateFrontPage = file_get_contents('templates/Body.html');
+        // Obtenemos la portada en caso de que exista una
+        if(!empty($systemTemplate->getIdSystemFrontPage())) {
+            $systemTemplateFrontPage = $this->systemTemplateFrontPageRepository->findById($systemTemplate->getIdSystemFrontPage());
+
+            // Obtenemos la orientacion de la portada
+            $systemOrientation = $this->systemOrientationRepository->findById($systemTemplateFrontPage->getIdSystemOrientation());
+
+            // Obtenemos el tamaño de la portada
+            $systemSize = $this->systemSizeRepository->findById($systemTemplateFrontPage->getIdSystemSize());
+
+            // Si la portada del pdf tiene un header
+            if(!empty($systemTemplateFrontPage->getHeader())) {
+                $templateFrontPageHeader = file_get_contents('templates/Header.html');
+
+                // Reemplazamos las etiquetas en la plantilla (Ponemos el body)
+                $FileFrontPageHeader = Functions::ReplaceContentPage(
+                // Etiquetas
+                    ['<!--##HEADER##-->'],
+                    // Datos a intercambiar
+                    [$systemTemplateFrontPage->getHeader()],
+                    // Template donde estan las etiquetas
+                    $templateFrontPageHeader);
+
+                $SourceFrontPageHeader = Functions::GenerateArchive($FileFrontPageHeader, '.html', false, false);
+            }
+
+            // Si el pdf tiene un footer
+            if(!empty($systemTemplateFrontPage->getFooter())) {
+                $templateFrontPageFooter = file_get_contents('templates/Footer.html');
+
+                // Reemplazamos las etiquetas en la plantilla (Ponemos el body)
+                $FileFrontPageFooter = Functions::ReplaceContentPage(
+                // Etiquetas
+                    ['<!--##FOOTER##-->'],
+                    // Datos a intercambiar
+                    [$systemTemplateFrontPage->getFooter()],
+                    // Template donde estan las etiquetas
+                    $templateFrontPageFooter);
+
+                $SourceFrontPageFooter = Functions::GenerateArchive($FileFrontPageFooter, '.html', false, false);
+            }
+
+            // Template
+            $templateBody = file_get_contents('templates/Body.html');
 
             // Reemplazamos las etiquetas en la plantilla (Ponemos el body)
-            $FileFrontPage = Functions::ReplaceContentPage(
-                // Etiquetas
+            $FileFrontPageContent = Functions::ReplaceContentPage(
+            // Etiquetas
                 ['<!--##BODY##-->'],
                 // Datos a intercambiar
-                [$systemTemplate->getFrontPage()],
+                [$systemTemplateFrontPage->getBody()],
                 // Template donde estan las etiquetas
-                $templateFrontPage);
+                $templateBody);
 
             // Archivo con el contenido, Nombre del archivo, , Configuracion del PDF, Funcion para la configuracion del wkhtmltopdf
-            $SourceFrontPage = Functions::GeneratePDF($FileFrontPage, false, false, [], function (Wkhtmltopdf $Wkhtmltopdf) use ($systemTemplate, $systemOrientation, $systemSize) {
+            $SourceFrontPage = Functions::GeneratePDF($FileFrontPageContent, false, false, [], function (Wkhtmltopdf $Wkhtmltopdf) use ($SourceFrontPageHeader, $SourceFrontPageFooter, $systemTemplateFrontPage, $systemOrientation, $systemSize) {
                 // Establecemos la orientacion de la hoja
                 $Wkhtmltopdf->setOrientation($systemOrientation->getType());
 
@@ -82,35 +121,42 @@ class systemDocumentReportService {
 
                 // Establecemos margenes de la hoja
                 $Wkhtmltopdf->setMargins([
-                    'left'   => $systemTemplate->getMarginLeft(),
-                    'right'  => $systemTemplate->getMarginRight(),
-                    'top'    => $systemTemplate->getMarginTop(),
-                    'bottom' => $systemTemplate->getMarginBottom(),
+                    'left'   => $systemTemplateFrontPage->getMarginLeft(),
+                    'right'  => $systemTemplateFrontPage->getMarginRight(),
+                    'top'    => $systemTemplateFrontPage->getMarginTop(),
+                    'bottom' => $systemTemplateFrontPage->getMarginBottom(),
                 ]);
 
+                // Si la portada tiene un header
+                if(!empty($systemTemplateFrontPage->getHeader())) {
+                    // Agregamos el header
+                    $Wkhtmltopdf->setHeaderHtml($SourceFrontPageHeader['sourceFile']);
+                }
+
+                // Si la portada tiene un footer
+                if(!empty($systemTemplateFrontPage->getFooter())) {
+                    // Agregamos el footer
+                    $Wkhtmltopdf->setFooterHtml($SourceFrontPageFooter['sourceFile']);
+                }
+
+                $Wkhtmltopdf->setRunScript('\'document.body.className+=" alt-printarticle";\'');
+
                 // Establecemos el Espaciado del header
-                $Wkhtmltopdf->setHeaderSpacing($systemTemplate->getHeaderSpacing());
+                $Wkhtmltopdf->setHeaderSpacing($systemTemplateFrontPage->getHeaderSpacing());
 
                 // Establecemos el Espaciado del footer
-                $Wkhtmltopdf->setFooterSpacing($systemTemplate->getFooterSpacing());
+                $Wkhtmltopdf->setFooterSpacing($systemTemplateFrontPage->getFooterSpacing());
             });
         }
 
-        //Si el pdf tiene una portada y un header
-        if(!empty($systemTemplate->getFrontPage()) && !empty($systemTemplate->getHeader())) {
-            $templateHeader = file_get_contents('templates/HeaderFrontPage.html');
+        // Obtenemos la orientacion de la hoja
+        $systemOrientation = $this->systemOrientationRepository->findById($systemTemplate->getIdSystemOrientation());
 
-            // Reemplazamos las etiquetas en la plantilla (Ponemos el body)
-            $FileHeader = Functions::ReplaceContentPage(
-                // Etiquetas
-                ['<!--##HEADER##-->'],
-                // Datos a intercambiar
-                [$systemTemplate->getHeader()],
-                // Template donde estan las etiquetas
-                $templateHeader);
+        // Obtenemos el tamaño de la hoja
+        $systemSize = $this->systemSizeRepository->findById($systemTemplate->getIdSystemSize());
 
-            $SourceHeader = Functions::GenerateArchive($FileHeader, '.html', false, false);
-        } else if(!empty($systemTemplate->getHeader())) { // Si el pdf tiene un header
+        // Si el pdf tiene un header
+        if(!empty($systemTemplate->getHeader())) {
             $templateHeader = file_get_contents('templates/Header.html');
 
             // Reemplazamos las etiquetas en la plantilla (Ponemos el body)
@@ -125,21 +171,8 @@ class systemDocumentReportService {
             $SourceHeader = Functions::GenerateArchive($FileHeader, '.html', false, false);
         }
 
-        //Si el pdf tiene una portada y un footer
-        if(!empty($systemTemplate->getFrontPage()) && !empty($systemTemplate->getFooter())) {
-            $templateFooter = file_get_contents('templates/FooterFrontPage.html');
-
-            // Reemplazamos las etiquetas en la plantilla (Ponemos el body)
-            $FileFooter = Functions::ReplaceContentPage(
-                // Etiquetas
-                ['<!--##FOOTER##-->'],
-                // Datos a intercambiar
-                [$systemTemplate->getFooter()],
-                // Template donde estan las etiquetas
-                $templateFooter);
-
-            $SourceFooter = Functions::GenerateArchive($FileFooter, '.html', false, false);
-        } else if(!empty($systemTemplate->getFooter())) { // Si el pdf tiene un footer
+        // Si el pdf tiene un footer
+        if(!empty($systemTemplate->getFooter())) {
             $templateFooter = file_get_contents('templates/Footer.html');
 
             // Reemplazamos las etiquetas en la plantilla (Ponemos el body)
@@ -188,7 +221,6 @@ class systemDocumentReportService {
             // Template donde estan las etiquetas
             $FileBody);
 
-
         // Archivo con el contenido, Nombre del archivo, , Configuracion del PDF, Funcion para la configuracion del wkhtmltopdf
         $SourceFile = Functions::GeneratePDF($FileContent, false, false, [], function (Wkhtmltopdf $Wkhtmltopdf) use ($SourceHeader, $SourceFooter, $systemTemplate, $systemOrientation, $systemSize) {
             // Establecemos la orientacion de la hoja
@@ -205,20 +237,14 @@ class systemDocumentReportService {
                 'bottom' => $systemTemplate->getMarginBottom(),
             ]);
 
-            // Si el pdf tiene una portada y un header
-            if(!empty($systemTemplate->getFrontPage()) && !empty($systemTemplate->getHeader())) {
-                // Agregamos el header
-                $Wkhtmltopdf->setHeaderHtml($SourceHeader['sourceFile']);
-            } else if(!empty($systemTemplate->getHeader())) { // Si el pdf tiene un header
+            // Si el pdf tiene un header
+            if(!empty($systemTemplate->getHeader())) {
                 // Agregamos el header
                 $Wkhtmltopdf->setHeaderHtml($SourceHeader['sourceFile']);
             }
 
-            // Si el pdf tiene una portada y un footer
-            if(!empty($systemTemplate->getFrontPage()) && !empty($systemTemplate->getFooter())) {
-                // Agregamos el footer
-                $Wkhtmltopdf->setFooterHtml($SourceFooter['sourceFile']);
-            } else if(!empty($systemTemplate->getFooter())) { // Si el pdf tiene un footer
+            // Si el pdf tiene un footer
+            if(!empty($systemTemplate->getFooter())) {
                 // Agregamos el footer
                 $Wkhtmltopdf->setFooterHtml($SourceFooter['sourceFile']);
             }
@@ -235,7 +261,7 @@ class systemDocumentReportService {
         $pdf = new PDFMerger();
 
         // Si existe una portada la agregamos al pdf
-        if(!empty($systemTemplate->getFrontPage())) {
+        if(!empty($systemTemplate->getIdSystemFrontPage())) {
             $pdf->addPDF($SourceFrontPage['sourceFile']);
         }
         $pdf->addPDF($SourceFile['sourceFile']);
@@ -244,9 +270,19 @@ class systemDocumentReportService {
         // Guardamos en el SystemLog la Accion
         $this->accesoService->create('systemDocument', $id, 21, 'Creacion de PDF');
 
-        if(!empty($systemTemplate->getFrontPage())) {
+        // Si el pdf tiene una portada
+        if(!empty($systemTemplate->getIdSystemFrontPage())) {
             // Eliminamos el archivo
             unlink($SourceFrontPage['sourceFile']);
+
+            if(!empty($systemTemplateFrontPage->getHeader())) {
+                // Eliminamos el archivo
+                unlink($SourceFrontPageHeader['sourceFile']);
+            }
+            if(!empty($systemTemplateFrontPage->getFooter())) {
+                // Eliminamos el archivo
+                unlink($SourceFrontPageFooter['sourceFile']);
+            }
         }
         if(!empty($systemTemplate->getHeader())) {
             // Eliminamos el archivo

@@ -10,15 +10,15 @@ App\Entity\systemTemplate:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
     footer:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
-    orientation:
+    idSystemOrientation:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
-    size:
+    idSystemSize:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
     headerSpacing:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
     footerSpacing:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
-    frontPage:
+    idSystemFrontPage:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
     marginLeft:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
@@ -29,4 +29,6 @@ App\Entity\systemTemplate:
     marginBottom:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
     script:
+      groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]
+    paginate:
       groups: [ systemTemplate_read, systemTemplate_create, systemTemplate_update ]

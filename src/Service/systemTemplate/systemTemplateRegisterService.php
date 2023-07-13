@@ -22,8 +22,8 @@
          * @throws OptimisticLockException
          * @throws ORMException
          */
-        public function create(string $name, ?string $json, ?string $header, string $body, ?string $footer, int $orientation, int $size, ?int $headerSpacing, ?int $footerSpacing, ?string $frontPage, ?int $marginLeft, ?int $marginRight, ?int $marginTop, ?int $marginBottom, ?string $script): systemTemplate {
-            $systemTemplate = new systemTemplate($name, $json, $header, $body, $footer, $orientation, $size, $headerSpacing, $footerSpacing, $frontPage, $marginLeft, $marginRight, $marginTop, $marginBottom, $script);
+        public function create(string $name, ?string $json, ?string $header, string $body, ?string $footer, int $idSystemOrientation, int $idSystemSize, ?int $headerSpacing, ?int $footerSpacing, ?int $idSystemFrontPage, ?int $marginLeft, ?int $marginRight, ?int $marginTop, ?int $marginBottom, ?string $script, ?int $paginate): systemTemplate {
+            $systemTemplate = new systemTemplate($name, $json, $header, $body, $footer, $idSystemOrientation, $idSystemSize, $headerSpacing, $footerSpacing, $idSystemFrontPage, $marginLeft, $marginRight, $marginTop, $marginBottom, $script, $paginate);
 
             $this->repository->save($systemTemplate);
 
@@ -33,16 +33,17 @@
                 'header' => $systemTemplate->getHeader(),
                 'body' => $systemTemplate->getBody(),
                 'footer' => $systemTemplate->getFooter(),
-                'orientation' => $systemTemplate->getOrientation(),
-                'size' => $systemTemplate->getSize(),
-                'headerSpacing' => $systemTemplate->getHeaderSpacing(),
-                'footerSpacing' => $systemTemplate->getFooterSpacing(),
-                'frontPage' => $systemTemplate->getFrontPage(),
+                'idSystemOrientation' => $systemTemplate->getIdSystemOrientation(),
+                'idSystemSize' => $systemTemplate->getIdSystemSize(),
+                'headerSpacing' => $systemTemplate->getheaderSpacing(),
+                'footerSpacing' => $systemTemplate->getfooterSpacing(),
+                'idSystemFrontPage' => $systemTemplate->getIdSystemFrontPage(),
+                'script' => $systemTemplate->getScript(),
                 'marginLeft' => $systemTemplate->getMarginLeft(),
                 'marginRight' => $systemTemplate->getMarginRight(),
                 'marginTop' => $systemTemplate->getMarginTop(),
                 'marginBottom' => $systemTemplate->getMarginBottom(),
-                'script' => $systemTemplate->getScript()
+                'paginate' => $systemTemplate->getPaginate()
             ];
             $this->accesoService->create('systemTemplate', $systemTemplate->getId(), 2, $data);
 

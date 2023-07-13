@@ -81,6 +81,13 @@
                         'extra'  => '',
                         'render' => ''
                     ],
+                    [
+                        'type'   => 0,
+                        'name'   => '',
+                        'alias'  => '',
+                        'extra'  => 'report',
+                        'render' => ''
+                    ],
                     
                 ],
                 'condition' => '',

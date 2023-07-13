@@ -121,6 +121,14 @@ App\Entity\systemTemplateFrontPage:
         groups: [ systemTemplateFrontPage_read ]
       openapi_context:
         summary: Obtiene la informacion del registro
+    getReport:
+      method: GET
+      path: /systemTemplateFrontPage/report/{id}
+      controller: App\Api\Action\systemTemplateFrontPage\Report
+      denormalization_context:
+        groups: [ systemTemplateFrontPage_read ]
+      openapi_context:
+        summary: Genera el reporte con la informacion del registro
     put:
       method: PUT
       path: /systemTemplateFrontPage/{id}

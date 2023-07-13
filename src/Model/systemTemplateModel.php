@@ -62,15 +62,15 @@
                     ],
                     [
                         'type'   => 1,
-                        'name'   => '(select name from systemOrientation where systemOrientation.id = systemTemplate.orientation)',
-                        'alias'  => 'orientation',
+                        'name'   => '(select name from systemOrientation where systemOrientation.id = systemTemplate.idSystemOrientation)',
+                        'alias'  => 'idSystemOrientation',
                         'extra'  => '',
                         'render' => ''
                     ],
                     [
                         'type'   => 1,
-                        'name'   => '(select name from systemSize where systemSize.id = systemTemplate.size)',
-                        'alias'  => 'size',
+                        'name'   => '(select name from systemSize where systemSize.id = systemTemplate.idSystemSize)',
+                        'alias'  => 'idSystemSize',
                         'extra'  => '',
                         'render' => ''
                     ],
@@ -90,15 +90,8 @@
                     ],
                     [
                         'type'   => 1,
-                        'name'   => 'frontPage',
-                        'alias'  => '',
-                        'extra'  => '',
-                        'render' => ''
-                    ],
-                    [
-                        'type'   => 1,
-                        'name'   => 'script',
-                        'alias'  => '',
+                        'name'   => '(select name from systemTemplateFrontPage where systemTemplateFrontPage.id = systemTemplate.idSystemFrontPage)',
+                        'alias'  => 'idSystemFrontPage',
                         'extra'  => '',
                         'render' => ''
                     ],
@@ -108,7 +101,7 @@
                 'group'     => '',
                 'order'     => ' id ASC ',
                 'renderRow' => '',
-                'debug'     => 0
+                'debug'     => 1
             ];
 
             return $serverQuery;

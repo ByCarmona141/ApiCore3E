@@ -9,33 +9,35 @@
         private ?string $header;
         private string $body;
         private ?string $footer;
-        private int $orientation;
-        private int $size;
+        private int $idSystemOrientation;
+        private int $idSystemSize;
         private ?int $headerSpacing;
         private ?int $footerSpacing;
-        private ?string $frontPage;
+        private ?int $idSystemFrontPage;
         private ?int $marginLeft;
         private ?int $marginRight;
         private ?int $marginTop;
         private ?int $marginBottom;
         private ?string $script;
+        private ?int $paginate;
 
-        public function __construct(string $name, ?string $json, ?string $header, string $body, ?string $footer, int $orientation, int $size, ?int $headerSpacing, ?int $footerSpacing, ?string $frontPage, ?int $marginLeft, ?int $marginRight, ?int $marginTop, ?int $marginBottom, ?string $script) {
+        public function __construct(string $name, ?string $json, ?string $header, string $body, ?string $footer, int $idSystemOrientation, int $idSystemSize, ?int $headerSpacing, ?int $footerSpacing, ?int $idSystemFrontPage, ?int $marginLeft, ?int $marginRight, ?int $marginTop, ?int $marginBottom, ?string $script, ?int $paginate) {
             $this->name = $name;
             $this->json = $json;
             $this->header = $header;
             $this->body = $body;
             $this->footer = $footer;
-            $this->orientation = $orientation;
-            $this->size = $size;
+            $this->idSystemOrientation = $idSystemOrientation;
+            $this->idSystemSize = $idSystemSize;
             $this->headerSpacing = $headerSpacing;
             $this->footerSpacing = $footerSpacing;
-            $this->frontPage = $frontPage;
+            $this->idSystemFrontPage = $idSystemFrontPage;
             $this->marginLeft = $marginLeft;
             $this->marginRight = $marginRight;
             $this->marginTop = $marginTop;
             $this->marginBottom = $marginBottom;
             $this->script = $script;
+            $this->paginate = $paginate;
         }
         
         public function setId(int $id): void {
@@ -86,20 +88,20 @@
             return $this->footer;
         }
         
-        public function setOrientation(int $orientation): void {
-            $this->orientation = $orientation;
+        public function setIdSystemOrientation(int $idSystemOrientation): void {
+            $this->idSystemOrientation = $idSystemOrientation;
         }
         
-        public function getOrientation(): int {
-            return $this->orientation;
+        public function getIdSystemOrientation(): int {
+            return $this->idSystemOrientation;
         }
         
-        public function setSize(int $size): void {
-            $this->size = $size;
+        public function setIdSystemSize(int $idSystemSize): void {
+            $this->idSystemSize = $idSystemSize;
         }
         
-        public function getSize(): int {
-            return $this->size;
+        public function getIdSystemSize(): int {
+            return $this->idSystemSize;
         }
         
         public function setHeaderSpacing(?int $headerSpacing): void {
@@ -118,12 +120,12 @@
             return $this->footerSpacing;
         }
         
-        public function setFrontPage(?string $frontPage): void {
-            $this->frontPage = $frontPage;
+        public function setIdSystemFrontPage(?int $idSystemFrontPage): void {
+            $this->idSystemFrontPage = $idSystemFrontPage;
         }
         
-        public function getFrontPage(): ?string {
-            return $this->frontPage;
+        public function getIdSystemFrontPage(): ?int {
+            return $this->idSystemFrontPage;
         }
 
         public function setMarginLeft(?int $marginLeft): void {
@@ -165,5 +167,12 @@
         public function getScript(): ?string {
             return $this->script;
         }
-        
+
+        public function setPaginate(?int $paginate): void {
+            $this->paginate = $paginate;
+        }
+
+        public function getPaginate(): ?int {
+            return $this->paginate;
+        }
     }
