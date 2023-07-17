@@ -38,6 +38,6 @@
             $script = RequestService::getField($request, 'script', false);
             $paginate = RequestService::getField($request, 'paginate', false);
 
-            return $this->service->update($id, $name, $json, $header, $body, $footer, $idSystemOrientation, $idSystemSize, $headerSpacing, $footerSpacing, $idSystemFrontPage, $marginLeft, $marginRight, $marginBottom, $marginTop, $script, $paginate);
+            return $this->service->update($id, $name, $json, $header, $body, $footer, $idSystemOrientation, $idSystemSize, $headerSpacing, $footerSpacing, $idSystemFrontPage, $marginLeft, $marginRight, $marginTop, $marginBottom, $script, $paginate);
         }
     }
