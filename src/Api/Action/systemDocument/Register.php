@@ -23,7 +23,7 @@
         public function __invoke(Request $request): systemDocument {
             $idSystemTemplate = RequestService::getField($request, 'idSystemTemplate', false);
             $content = RequestService::getField($request, 'content', false);
-            $dateCreate = RequestService::getField($request, 'dateCreate', false);
+            $dateCreate = new \DateTime(RequestService::getField($request, 'dateCreate', false));
 
             return $this->service->create($idSystemTemplate, $content, $dateCreate);
         }
