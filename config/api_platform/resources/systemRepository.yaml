@@ -17,7 +17,7 @@ App\Entity\systemRepository:
       controller: App\Api\Action\systemRepository\DataArchive
       deserialize: false
       openapi_context:
-        summary: Obtenemos el archivo del Repositorio
+        summary: Obtenemos los archivos de un registro del Repositorio
     datatable:
       method: POST
       path: /systemRepository/{serveFunction}
