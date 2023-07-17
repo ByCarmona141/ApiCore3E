@@ -51,9 +51,10 @@ class systemTemplateFrontPageReportService {
 
         // Si el pdf tiene un header
         if(!empty($systemTemplateFrontPage->getHeader())) {
+            // Obtenemos el template
             $templateHeader = file_get_contents('templates/Header.html');
 
-            // Reemplazamos las etiquetas en la plantilla (Ponemos el body)
+            // Reemplazamos las etiquetas en la plantilla (Ponemos el header)
             $FileHeader = Functions::ReplaceContentPage(
                 // Etiquetas
                 ['<!--##HEADER##-->'],
@@ -62,11 +63,13 @@ class systemTemplateFrontPageReportService {
                 // Template donde estan las etiquetas
                 $templateHeader);
 
+            // Generamos el html
             $SourceHeader = Functions::GenerateArchive($FileHeader, '.html', false, false);
         }
 
         // Si el pdf tiene un footer
         if(!empty($systemTemplateFrontPage->getFooter())) {
+            // Obtenemos el template
             $templateFooter = file_get_contents('templates/Footer.html');
 
             // Reemplazamos las etiquetas en la plantilla (Ponemos el body)
@@ -78,6 +81,7 @@ class systemTemplateFrontPageReportService {
                 // Template donde estan las etiquetas
                 $templateFooter);
 
+            // Generamos el html
             $SourceFooter = Functions::GenerateArchive($FileFooter, '.html', false, false);
         }
 

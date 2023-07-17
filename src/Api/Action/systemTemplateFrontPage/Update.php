@@ -34,6 +34,6 @@
             $marginTop = RequestService::getField($request, 'marginTop', false);
             $marginBottom = RequestService::getField($request, 'marginBottom', false);
 
-            return $this->service->update($id, $name, $header, $body, $footer, $idSystemOrientation, $idSystemSize, $headerSpacing, $footerSpacing, $marginLeft, $marginRight, $marginBottom, $marginTop);
+            return $this->service->update($id, $name, $header, $body, $footer, $idSystemOrientation, $idSystemSize, $headerSpacing, $footerSpacing, $marginLeft, $marginRight, $marginTop, $marginBottom);
         }
     }
