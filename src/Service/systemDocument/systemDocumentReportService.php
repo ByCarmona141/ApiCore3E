@@ -53,6 +53,8 @@ class systemDocumentReportService {
         $systemTemplate = $this->systemTemplateRepository->findById($systemDocument->getIdSystemTemplate());
 
         // Configuracion de la portada
+        $SourceFrontPageHeader = '';
+        $SourceFrontPageFooter = '';
         $SourceFrontPage = [];
         $SourceHeader = [];
         $SourceFooter = [];
@@ -199,19 +201,22 @@ class systemDocumentReportService {
             // Template donde estan las etiquetas
             $templateBody);
 
-        // Convertimos el json del documento en array
-        $arrayJson = json_decode($systemDocument->getContent(), true);
-
         $tagsJson = [];
         $dataJson = [];
-        // Guardamos las etiquetas y los datos del json
-        foreach ($arrayJson as $key => $value) {
-            // Si no existe el campo tag
-            if(empty($value['tag'])) {
-                break;
+
+        if(!empty($systemDocument->getContent())) {
+            // Convertimos el json del documento en array
+            $arrayJson = json_decode($systemDocument->getContent(), true);
+
+            // Guardamos las etiquetas y los datos del json
+            foreach ($arrayJson as $key => $value) {
+                // Si no existe el campo tag
+                if(empty($value['tag'])) {
+                    break;
+                }
+                $tagsJson[] = $value['tag'];
+                $dataJson[] = $value['value'];
             }
-            $tagsJson[] = $value['tag'];
-            $dataJson[] = $value['value'];
         }
 
         // Reemplazamos las etiquetas del body con los datos del documento

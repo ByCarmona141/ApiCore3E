@@ -121,6 +121,14 @@ App\Entity\systemTemplate:
         groups: [ systemTemplate_read ]
       openapi_context:
         summary: Obtiene la informacion del registro
+    getJson:
+      method: GET
+      path: /systemTemplate/json/{id}
+      controller: App\Api\Action\systemTemplate\DataJson
+      denormalization_context:
+        groups: [ systemTemplate_read ]
+      openapi_context:
+        summary: Obtiene el json del template
     put:
       method: PUT
       path: /systemTemplate/{id}
